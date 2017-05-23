@@ -32,21 +32,6 @@ class SecurityControllerTest extends WebTestCase
         );
     }
 
-    public function testRegister()
-    {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', '/securite/inscription');
-
-        $form = $crawler->filter('button')->form();
-        $form['user[username]'] = 'johndoe@gmail.com';
-        $form['user[roles]']->select('ROLE_USER');
-        $form['user[plainPassword][first]'] = '123456';
-        $form['user[plainPassword][second]'] = '123456';
-
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-    }
-
     public function testLogout()
     {
         $client = static::createClient();

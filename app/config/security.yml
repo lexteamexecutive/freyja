@@ -25,6 +25,11 @@ security:
             logout:
                 path:   /securite/deconnexion
                 target: /securite/connexion
+            remember_me:
+                secret:   '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+                secure:   true
 
     role_hierarchy:
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
