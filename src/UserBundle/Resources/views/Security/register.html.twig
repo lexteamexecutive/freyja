@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for flash_message in app.session.flashBag.get('notice') %}
+        <div>
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.roles) }}
+        {{ form_row(form.plainPassword.first) }}
+        {{ form_row(form.plainPassword.second) }}
+
+        <button type="submit">Créer l'utilisateur</button>
+    {{ form_end(form) }}
+{% endblock %}
