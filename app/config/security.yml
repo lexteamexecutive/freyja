@@ -36,6 +36,6 @@ security:
         ROLE_ADMIN:       ROLE_USER
 
     access_control:
-        - { path: ^/securite/connexion,    roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/securite/inscription,  roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/,                      roles: ROLE_USER }
+        - { path: ^/securite/connexion,     roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/securite/utilisateurs,  roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/,                       roles: ROLE_USER }
