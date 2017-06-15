@@ -2,3 +2,6 @@ services:
 #    user.example:
 #        class: UserBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    user.manager:
+        class: UserBundle\Service\UserManager
+        arguments: ['@security.password_encoder', '@doctrine.orm.entity_manager']

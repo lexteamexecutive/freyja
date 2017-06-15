@@ -28,7 +28,8 @@ class UserType extends AbstractType
             )
             ->add(
                 'roles',
-                ChoiceType::class, [
+                ChoiceType::class,
+                [
                   'placeholder' => 'Choisir un rôle',
                   'multiple' => true,
                   'choice_loader' => new CallbackChoiceLoader(function() {
@@ -36,12 +37,16 @@ class UserType extends AbstractType
                   }),
                 ]
             )
-            ->add('plainPassword', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'first_options'  => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmer le mot de passe'],
-                'invalid_message' => 'Votre mot de passe doit être identique.',
-            ])
+            ->add(
+                'plainPassword',
+                RepeatedType::class,
+                [
+                    'type' => PasswordType::class,
+                    'first_options'  => ['label' => 'Mot de passe'],
+                    'second_options' => ['label' => 'Confirmer le mot de passe'],
+                    'invalid_message' => 'Votre mot de passe doit être identique.',
+                ]
+            )
         ;
     }
 
