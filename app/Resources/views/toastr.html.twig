@@ -1,0 +1,13 @@
+<script type="text/javascript">
+  toastr.options = {
+      closeButton: false,
+      debug: false,
+      newestOnTop: true,
+      progressBar: false,
+      positionClass: "toast-bottom-full-width",
+      preventDuplicates: false,
+      onclick: null
+  }
+
+  toastr.{{ type }}('{{ message }}', '{{ title }}')
+</script>

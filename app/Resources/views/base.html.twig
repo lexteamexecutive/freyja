@@ -1,13 +1,198 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}LexTeam Executive{% endblock %}</title>
+
+    {% block plugins_css %}
+      {% stylesheets
+        'plugins/datatables/jquery.dataTables.min.css'
+        'plugins/datatables/buttons.bootstrap.min.css'
+        'plugins/datatables/fixedHeader.bootstrap.min.css'
+        'plugins/datatables/responsive.bootstrap.min.css'
+        'plugins/toastr/toastr.min.css'
+        'plugins/select2/dist/css/select2.css'
+        'plugins/select2/dist/css/select2-bootstrap.css'
+        filter='cssrewrite'
+        output='css/compiled/plugins.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+      {% endstylesheets %}
+
+    {% stylesheets
+      'css/bootstrap.min.css'
+      'css/core.css'
+      'css/components.css'
+      'css/icons.css'
+      'css/pages.css'
+      'css/menu.css'
+      'css/responsive.css'
+      filter='cssrewrite'
+      output='css/compiled/app.css' %}
+      <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% endblock %}
+
+    {% stylesheets
+      'css/bootstrap.min.css'
+      filter='cssrewrite'
+      output='css/compiled/app.css' %}
+      <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    {% javascripts
+      'js/modernizr.min.js'
+      output='js/compiled/modernizr.js' %}
+      <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+  </head>
+  <body>
+  {% block navbar %}
+    <!-- Navigation Bar-->
+    <header id="topnav">
+          <div class="topbar-main">
+              <div class="container-fluid">
+                  <!-- LOGO -->
+                  <div class="topbar-left">
+                      <a href="#" class="logo">
+                          <span>Lexteam<span>Executive</span></span>
+                          <!--<span><img src="assets/images/logo.png" alt="logo" style="height: 20px;"></span>-->
+                      </a>
+                  </div>
+                  <!-- End Logo container-->
+
+                  <div class="navbar-custom navbar-left">
+                      <div id="navigation">
+                          <!-- Navigation Menu-->
+                          <ul class="navigation-menu">
+                              <li>
+                                  <a href="index.html">
+                                      <span><i class="zmdi zmdi-view-dashboard"></i></span>
+                                      <span> Dashboard </span>
+                                  </a>
+                              </li>
+
+                              <li class="has-submenu">
+                                  <a href="#"><span><i class="zmdi zmdi-layers"></i></span><span> Candidat </span> </a>
+                                  <ul class="submenu">
+                                      <li><a href="javascript:void(0)">Créer une fiche</a></li>
+                                  </ul>
+                              </li>
+                          </ul>
+                          <!-- End navigation menu  -->
+                      </div>
+                  </div>
+
+
+                  <div class="menu-extras">
+
+                      <ul class="nav navbar-nav navbar-right pull-right">
+                          <li class="dropdown user-box">
+                              <a href="" class="dropdown-toggle waves-effect waves-light profile " data-toggle="dropdown" aria-expanded="true">
+                                  <img src="{{ asset('/images/default_user.png') }}" alt="user-img" class="img-circle user-img">
+                                  <div class="user-status away"><i class="zmdi zmdi-dot-circle"></i></div>
+                              </a>
+
+                              <ul class="dropdown-menu">
+                                  <li><a href="{{ path('security_user_manage') }}"><i class="ti-user m-r-5"></i> Gestion Utilisateurs</a></li>
+                                  <li><a href="{{ path('logout') }}"><i class="ti-power-off m-r-5"></i> Se Deconnecter</a></li>
+                              </ul>
+                          </li>
+                      </ul>
+                      <div class="menu-item">
+                          <!-- Mobile menu toggle-->
+                          <a class="navbar-toggle">
+                              <div class="lines">
+                                  <span></span>
+                                  <span></span>
+                                  <span></span>
+                              </div>
+                          </a>
+                          <!-- End mobile menu toggle-->
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </header>
+    <!-- End Navigation Bar-->
+  {% endblock %}
+
+  <div class="wrapper">
+    <div class="container">
+      {% block page_title %}
+        <!-- Page-Title -->
+        <div class="row">
+            PAGE TITLE
+        </div>
+      {% endblock %}
+
+      {% block body %}{% endblock %}
+
+      {% block footer %}
+        <!-- Footer -->
+        <footer class="footer text-right">
+          FOOTER
+        </footer>
+        <!-- End Footer -->
+      {% endblock %}
+    </div>
+    <!-- end container -->
+
+      {% block right_sidebar %}
+        <!-- Right Sidebar -->
+        <div class="side-bar right-bar">
+            SIDEBAR RIGHT
+        </div>
+        <!-- /Right-bar -->
+      {% endblock %}
+  </div>
+
+  {% block javascripts %}
+    {% javascripts
+      'js/jquery.min.js'
+      'js/bootstrap.min.js'
+      'js/detect.js'
+      'js/fastclick.js'
+      'js/waves.js'
+      'js/wow.min.js'
+      'js/jquery.core.js'
+      'js/jquery.app.js'
+      output='js/compiled/app.js' %}
+      <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+  {% endblock %}
+
+  {% block plugins_js %}
+    {% javascripts
+      'plugins/datatables/jquery.dataTables.min.js'
+      'plugins/datatables/dataTables.bootstrap.js'
+      'plugins/datatables/dataTables.buttons.min.js'
+      'plugins/datatables/buttons.bootstrap.min.js'
+      'plugins/toastr/toastr.min.js'
+      'plugins/parsleyjs/dist/parsley.min.js'
+      'plugins/select2/dist/js/select2.min.js'
+      output='js/compiled/plugins.js' %}
+      <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+  {% endblock %}
+
+  {#
+      Init Declarations Plugins JS
+  #}
+  {% block toastr %}
+  {% endblock %}
+
+  {% block parsley %}
+  {% endblock %}
+
+  {% block datatable %}
+  {% endblock %}
+
+  {% block select2 %}
+  {% endblock %}
+  </body>
 </html>

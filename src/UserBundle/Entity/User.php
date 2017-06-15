@@ -6,12 +6,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
- * @UniqueEntity(fields="username", message="Email déjà utilisé")
+ * @UniqueEntity(fields="username", message="Cet Email est déjà utilisé")
  */
 class User implements AdvancedUserInterface, \Serializable
 {
@@ -41,12 +40,12 @@ class User implements AdvancedUserInterface, \Serializable
     private $password;
 
     /**
-     * @ORM\Column(type="json_array")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank()
      */
     private $roles;
 
-    public static $arrayRoles = [
+    public static $rolesList = [
         'Administrateur' => 'ROLE_ADMIN',
         'Utilisateur' => 'ROLE_USER',
     ];
@@ -93,8 +92,6 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getSalt()
     {
-       // The bcrypt algorithm doesn't require a separate salt.
-       // You *may* need a real salt if you choose a different encoder.
        return null;
     }
 
@@ -105,7 +102,17 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getRoles()
     {
-        return $this->roles;
+        return [$this->roles];
+    }
+
+    public function getRoleUF()
+    {
+        foreach(self::$rolesList as $key => $role){
+            if($role == $this->roles)
+                return $key;
+        }
+
+        return;
     }
 
     public function eraseCredentials()

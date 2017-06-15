@@ -8,9 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use UserBundle\Form\UserType;
 use UserBundle\Entity\User;
 
-  /**
-   * @Route("/securite", name="security")
-   */
+/**
+ * @Route("/securite", name="security")
+ */
 class SecurityController extends Controller
 {
     /**
@@ -18,7 +18,9 @@ class SecurityController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('UserBundle:Security:index.html.twig');
+        return $this->render(
+            'UserBundle:Security:index.html.twig'
+        );
     }
 
     /**
@@ -27,6 +29,7 @@ class SecurityController extends Controller
     public function loginAction(Request $request)
     {
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $this->addFlash('warning', 'Vous êtes déjà connecté, veuillez vous deconnecter si vous souhaitez vous reconnecter');
             return $this->redirectToRoute('security_index');
         }
 
@@ -34,49 +37,55 @@ class SecurityController extends Controller
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-
+        if($error){
+            $this->addFlash('error', 'Login ou mot de passe incorrect');
+        }
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render(
             'UserBundle:Security:login.html.twig',
             [
-                'error'          => $error,
                 'last_username'  => $lastUsername,
             ]
         );
     }
 
     /**
-     * @Route("/inscription", name="security_user_registration")
+     * @Route("/utilisateurs", name="security_user_manage")
      */
-    public function registerAction(Request $request)
+    public function manageUsersAction(Request $request)
     {
-        // 1) build the form
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 
-        // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
 
-            // 3) Encode the password (you could also do this via Doctrine listener)
             $password = $this->get('security.password_encoder')
                 ->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
-            $user->setRoles(['ROLE_USER']);
+            $user->setRoles($data->getRoles()[0][0]);
 
-            // 4) save the User!
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash('notice', 'Profil Utilisateur ajouté');
+            $this->addFlash('success', 'Profil Utilisateur ajouté');
+        }else{
+          foreach($form->getErrors(true) as $error){
+              $this->addFlash('error', $error->getMessage());
+          }
         }
+
+        $userRepository = $this->getDoctrine()->getRepository('UserBundle:User');
+        $users = $userRepository->findAll();
 
         return $this->render(
             'UserBundle:Security:register.html.twig',
             [
-              'form' => $form->createView(),
+              'form'  => $form->createView(),
+              'users' => $users,
             ]
         );
     }

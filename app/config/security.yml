@@ -25,12 +25,17 @@ security:
             logout:
                 path:   /securite/deconnexion
                 target: /securite/connexion
+            remember_me:
+                secret:   '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+                secure:   true
 
     role_hierarchy:
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
         ROLE_ADMIN:       ROLE_USER
 
     access_control:
-        - { path: ^/securite/connexion,    roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/securite/inscription,  roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/,                      roles: ROLE_USER }
+        - { path: ^/securite/connexion,     roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/securite/utilisateurs,  roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/,                       roles: ROLE_USER }

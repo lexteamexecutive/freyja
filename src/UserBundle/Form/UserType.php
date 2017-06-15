@@ -30,8 +30,9 @@ class UserType extends AbstractType
                 'roles',
                 ChoiceType::class, [
                   'placeholder' => 'Choisir un rôle',
+                  'multiple' => true,
                   'choice_loader' => new CallbackChoiceLoader(function() {
-                      return User::$arrayRoles;
+                      return User::$rolesList;
                   }),
                 ]
             )
