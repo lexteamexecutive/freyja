@@ -18,8 +18,8 @@
 /app/config/parameters.yml
 
 # Assets and user uploads
-/web/css/compiled/*
-/web/js/compiled/*
+/web/css/*
+/web/js/*
 /web/bundles/
 /web/uploads/
 
