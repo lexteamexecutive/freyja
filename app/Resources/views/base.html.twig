@@ -8,6 +8,7 @@
 
     {% block plugins_css %}
       {% stylesheets
+        'plugins/jquery-datatables-editable/datatables.css'
         'plugins/datatables/jquery.dataTables.min.css'
         'plugins/datatables/buttons.bootstrap.min.css'
         'plugins/datatables/fixedHeader.bootstrap.min.css'
@@ -101,15 +102,15 @@
 
   {% block plugins_js %}
     {% javascripts
-      'plugins/datatables/jquery.dataTables.min.js'
-      'plugins/datatables/dataTables.bootstrap.js'
-      'plugins/datatables/dataTables.buttons.min.js'
-      'plugins/datatables/buttons.bootstrap.min.js'
-      'plugins/toastr/toastr.min.js'
-      'plugins/parsleyjs/dist/parsley.min.js'
-      'plugins/select2/dist/js/select2.min.js'
+        'plugins/datatables/jquery.dataTables.min.js'
+        'plugins/datatables/dataTables.bootstrap.js'
+        'plugins/datatables/dataTables.buttons.min.js'
+        'plugins/datatables/buttons.bootstrap.min.js'
+        'plugins/toastr/toastr.min.js'
+        'plugins/parsleyjs/dist/parsley.min.js'
+        'plugins/select2/dist/js/select2.min.js'
       output='js/compiled/plugins.js' %}
-      <script src="{{ asset_url }}"></script>
+    <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
   {% endblock %}
 
