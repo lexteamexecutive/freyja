@@ -46,6 +46,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $roles;
 
     public static $rolesList = [
+        'Super Admin' => 'ROLE_SUPER_ADMIN',
         'Administrateur' => 'ROLE_ADMIN',
         'Utilisateur' => 'ROLE_USER',
     ];
