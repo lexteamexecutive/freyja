@@ -5,7 +5,7 @@ Freyja Project
 * You can explore the documentation of the application right here : http://docs.lexteam-executive.com/freyja
 
 ## Badges
-[![CircleCI](https://circleci.com/gh/lexteamexecutive/freyja/tree/master.svg?style=svg)](https://circleci.com/gh/lexteamexecutive/freyja/tree/master)
+[![CircleCI](https://circleci.com/gh/lexteamexecutive/freyja.svg?style=svg&circle-token=dca5536f826c251a84b874949109da6663a13d35)](https://circleci.com/gh/lexteamexecutive/freyja)
 
 Authors :
 * Mathieu JUSTEAU
