@@ -75,7 +75,7 @@ class SecurityController extends Controller
         }
 
         return $this->render(
-            'UserBundle:Security:register.html.twig',
+            'UserBundle:Security:User/template.html.twig',
             [
                 'form'  => $form->createView(),
                 'users' => $userRepository->findAll(),
