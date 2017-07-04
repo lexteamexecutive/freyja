@@ -60,8 +60,6 @@ class SecurityController extends Controller
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 
-        $userRepository = $this->getDoctrine()->getRepository('UserBundle:User');
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setRoles($form->getData()->getRoles()[0][0]);
@@ -74,11 +72,16 @@ class SecurityController extends Controller
             }
         }
 
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+
+        $userRepository = $this->getDoctrine()->getRepository('UserBundle:User');
+
         return $this->render(
-            'UserBundle:Security:User/template.html.twig',
+            'UserBundle:User:template.html.twig',
             [
                 'form'  => $form->createView(),
-                'users' => $userRepository->findAll(),
+                'users' => $userRepository->findAllUF(),
             ]
         );
     }
