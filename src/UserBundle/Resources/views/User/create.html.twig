@@ -1,0 +1,87 @@
+<div class="card-box">
+    <h4 class="header-title m-t-0 m-b-30">Nouvel utilisateur</h4>
+    <form action="{{ path('security_user_manage') }}" method="post" class="form-horizontal" role="form" data-parsley-validate novalidate>
+        <div class="form-group">
+            {{ form_label(form.username, 'Email*', {
+                'label_attr': {
+                    'class': 'col-sm-4 control-label'
+                }
+              })
+            }}
+            <div class="col-sm-7">
+              {{ form_widget(form.username, {
+                  'attr': {
+                      'parsley-type': 'email',
+                      'data-parsley-error-message': 'Un email est requis',
+                      'required': true,
+                      'class': 'form-control'
+                  },
+                })
+              }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.roles, 'Role*', {
+                'label_attr': {
+                    'class': 'col-sm-4 control-label'
+                }
+              })
+            }}
+            <div class="col-sm-7">
+              {{ form_widget(form.roles, {
+                  'attr': {
+                      'data-parsley-error-message': 'Veuillez choisir un rôle pour cet utilisateur',
+                      'required': true,
+                      'class': 'select2'
+                  },
+                })
+              }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.plainPassword.first, 'Mot de passe*', {
+                'label_attr': {
+                    'class': 'col-sm-4 control-label'
+                }
+              })
+            }}
+            <div class="col-sm-7">
+              {{ form_widget(form.plainPassword.first, {
+                  'attr': {
+                      'data-parsley-error-message': 'Un mot de passe est nécessaire',
+                      'required': true,
+                      'class': 'form-control'
+                  },
+                })
+              }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.plainPassword.second, 'Confirmation mot de passe*', {
+                'label_attr': {
+                    'class': 'col-sm-4 control-label'
+                }
+              })
+            }}
+            <div class="col-sm-7">
+              {{ form_widget(form.plainPassword.second, {
+                  'attr': {
+                    'data-parsley-equalto': '#user_plainPassword_first',
+                    'data-parsley-error-message': 'Les mots de passe doivent être identiques',
+                    'required': true,
+                      'class': 'form-control'
+                  },
+                })
+              }}
+            </div>
+        </div>
+        {{ form_widget(form._token) }}
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">
+                    Enregistrement de l'utilisateur
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
