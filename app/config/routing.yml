@@ -1,3 +1,8 @@
+front:
+    resource: "@FrontBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 candidate:
     resource: "@CandidateBundle/Controller/"
     type:     annotation

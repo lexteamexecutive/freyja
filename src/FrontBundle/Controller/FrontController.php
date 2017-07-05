@@ -15,6 +15,6 @@ class FrontController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('FrontBundle:Front:index.html.twig');
+        return $this->render('FrontBundle:Default:index.html.twig');
     }
 }
