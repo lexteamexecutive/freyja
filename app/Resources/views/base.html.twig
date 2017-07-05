@@ -16,6 +16,7 @@
         'plugins/toastr/toastr.min.css'
         'plugins/select2/dist/css/select2.css'
         'plugins/select2/dist/css/select2-bootstrap.css'
+        'plugins/bootstrap-sweetalert/sweet-alert.css'
         filter='cssrewrite'
         output='css/compiled/plugins.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
@@ -29,6 +30,7 @@
       'css/pages.css'
       'css/menu.css'
       'css/responsive.css'
+      'css/main.css'
       filter='cssrewrite'
       output='css/compiled/app.css' %}
       <link rel="stylesheet" href="{{ asset_url }}" />
@@ -95,6 +97,7 @@
       'js/wow.min.js'
       'js/jquery.core.js'
       'js/jquery.app.js'
+      'js/main.js'
       output='js/compiled/app.js' %}
       <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -102,6 +105,7 @@
 
   {% block plugins_js %}
     {% javascripts
+        'plugins/bootstrap-sweetalert/sweet-alert.min.js'
         'plugins/datatables/jquery.dataTables.min.js'
         'plugins/datatables/dataTables.bootstrap.js'
         'plugins/datatables/dataTables.buttons.min.js'

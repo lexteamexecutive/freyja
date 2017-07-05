@@ -5,6 +5,7 @@ namespace UserBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use UserBundle\Form\UserType;
 use UserBundle\Entity\User;
@@ -75,14 +76,45 @@ class SecurityController extends Controller
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 
-        $userRepository = $this->getDoctrine()->getRepository('UserBundle:User');
+        $users = $this->getUsersByRole();
 
         return $this->render(
             'UserBundle:User:template.html.twig',
             [
                 'form'  => $form->createView(),
-                'users' => $userRepository->findAllUF(),
+                'users' => $users,
             ]
         );
+    }
+
+    /**
+     * @Route("/utilisateurs/supprimer/{user}", name="security_user_delete", requirements={"page": "\d+"})
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function deleteUserAction(User $user): JsonResponse
+    {
+        if($this->get('security.token_storage')->getToken()->getUser() === $user) {
+            return new JsonResponse([
+                'message' => 'Vous ne pouvez pas vous supprimez votre utilisateur actuel',
+            ]);
+        }
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($user);
+        $em->flush();
+
+        return new JsonResponse([
+            'success' => true,
+        ]);
+    }
+
+    private function getUsersByRole(): array
+    {
+        $userRepository = $this->getDoctrine()->getRepository('UserBundle:User');
+
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            return $userRepository->findAll();
+        } else {
+            return $userRepository->findAllUF();
+        }
     }
 }

@@ -30,11 +30,15 @@ class UserType extends AbstractType
                 'roles',
                 ChoiceType::class,
                 [
-                  'placeholder' => 'Choisir un rôle',
-                  'multiple' => true,
-                  'choice_loader' => new CallbackChoiceLoader(function() {
-                      return User::$rolesList;
-                  }),
+                    'placeholder' => 'Choisir un rôle',
+                    'multiple' => true,
+                    'choice_loader' => new CallbackChoiceLoader(function() {
+                        return
+                            [
+                                'Administrateur' => 'ROLE_ADMIN',
+                                'Utilisateur' => 'ROLE_USER',
+                            ];
+                    }),
                 ]
             )
             ->add(
@@ -42,8 +46,8 @@ class UserType extends AbstractType
                 RepeatedType::class,
                 [
                     'type' => PasswordType::class,
-                    'first_options'  => ['label' => 'Mot de passe'],
-                    'second_options' => ['label' => 'Confirmer le mot de passe'],
+                    'first_options'  => [ 'label' => 'Mot de passe' ],
+                    'second_options' => [ 'label' => 'Confirmer le mot de passe' ],
                     'invalid_message' => 'Votre mot de passe doit être identique.',
                 ]
             )

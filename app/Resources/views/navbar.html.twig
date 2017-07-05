@@ -34,8 +34,12 @@
 
 
             <div class="menu-extras">
-
                 <ul class="nav navbar-nav navbar-right pull-right">
+                    <li>
+                        <p id="navbar-username">
+                            Utilisateur: {{ app.user.username }}
+                        </p>
+                    </li>
                     <li class="dropdown user-box">
                         <a href="" class="dropdown-toggle waves-effect waves-light profile " data-toggle="dropdown" aria-expanded="true">
                             <img src="{{ asset('/images/default_user.png') }}" alt="user-img" class="img-circle user-img">

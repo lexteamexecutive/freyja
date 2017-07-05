@@ -12,13 +12,14 @@
 
         <tbody>
             {% for user in users %}
-            <tr>
+            <tr {% if user == app.user %}class="info"{% endif %}>
                 <td>{{ user.username }}</td>
                 <td>{{ user.getRoleUF }}</td>
                 <td>{{ user.isEnabled ? 'Oui' : 'Non' }}</td>
                 <td class="actions">
                     <a href="javascript:void(0);"
-                        class="open-popup">
+                        onclick="deleteUser(this);"
+                        data-url="{{ path('security_user_delete', {'user': user.getId}) }}">
                         <i class="fa fa-trash-o"></i>
                     </a>
                 </td>
