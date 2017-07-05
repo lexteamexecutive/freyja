@@ -95,7 +95,7 @@ class SecurityController extends Controller
     {
         if($this->get('security.token_storage')->getToken()->getUser() === $user) {
             return new JsonResponse([
-                'message' => 'Vous ne pouvez pas vous supprimez votre utilisateur actuel',
+                'message' => 'Vous ne pouvez pas vous supprimez votre utilisateur actuel.',
             ]);
         }
         $em = $this->getDoctrine()->getEntityManager();

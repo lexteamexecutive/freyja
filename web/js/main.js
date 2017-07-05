@@ -2,6 +2,7 @@
 function deleteUser(element)
 {
   var url = element.dataset.url;
+  var tr = element.parentNode.parentNode; // Récupère le TR de l'element
 
   swal({
     title: 'Etes-vous sûr?',
@@ -21,27 +22,25 @@ function deleteUser(element)
         success: function (result) {
           console.log(result);
           if (result.success) {
-            swal({
-              title: 'Supprimé !',
-              text: 'La page va se recharger automatiquement',
-              timer: 2000,
-              showConfirmButton: false,
-            });
-            setTimeout(function () {
-                location.reload();
-              }, 1900);
+            swal('Supprimé!', 'La suppression a été effectué.', 'success');
+            tr.style.display = 'none';
           } else {
-            swal('Annulé', result.message, 'error');
+            swalCancel(result.message);
           }
         },
 
         error: function (error) {
-          swal('Annulé', 'Aucune action n\'a été faite', 'error');
+          swalCancel();
         },
       });
     } else {
-      swal('Annulé', 'Aucune action n\'a été faite', 'error');
+      swalCancel();
     }
 
   });
+}
+
+function swalCancel(message = 'Aucune action n\'a été faite')
+{
+  swal('Annulé', message, 'error');
 }
