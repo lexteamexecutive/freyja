@@ -1,4 +1,4 @@
 services:
-#    candidate.example:
-#        class: CandidateBundle\Example
+#    applicant.example:
+#        class: ApplicantBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]

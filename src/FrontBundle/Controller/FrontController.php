@@ -13,8 +13,8 @@ class FrontController extends Controller
     /**
      * @Route("/", name="front_dashboard")
      */
-    public function indexAction()
+    public function dashboardAction()
     {
-        return $this->render('FrontBundle:Default:index.html.twig');
+        return $this->render('FrontBundle:Dashboard:index.html.twig');
     }
 }

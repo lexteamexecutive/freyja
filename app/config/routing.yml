@@ -1,10 +1,10 @@
-front:
-    resource: "@FrontBundle/Controller/"
+applicant:
+    resource: "@ApplicantBundle/Controller/"
     type:     annotation
     prefix:   /
 
-candidate:
-    resource: "@CandidateBundle/Controller/"
+front:
+    resource: "@FrontBundle/Controller/"
     type:     annotation
     prefix:   /
 
