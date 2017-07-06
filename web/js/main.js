@@ -20,7 +20,6 @@ function deleteUser(element)
       $.ajax({
         url: url,
         success: function (result) {
-          console.log(result);
           if (result.success) {
             swal('Supprimé!', 'La suppression a été effectué.', 'success');
             tr.style.display = 'none';
@@ -38,6 +37,55 @@ function deleteUser(element)
     }
 
   });
+}
+
+function updateUserIsActive(element)
+{
+  var url = element.dataset.url;
+  var message = '';
+
+  initToastr();
+
+  $.ajax({
+    url: url,
+    success: function (result) {
+      if (element.checked) {
+        message = 'Utilisateur activé';
+      } else {
+        message = 'Utilisateur désactivé';
+      }
+
+      sendInfoToastr('La modification à été prise en compte', message);
+    },
+
+    error: function (error) {
+      sendErrToastr('Une erreur est survenue. Veuillez contactez la personne en charge de l\'application', 'Erreur');
+    },
+  });
+
+}
+
+function initToastr()
+{
+  toastr.options = {
+    closeButton: false,
+    debug: false,
+    newestOnTop: true,
+    progressBar: false,
+    positionClass: 'toast-bottom-full-width',
+    preventDuplicates: false,
+    onclick: null,
+  };
+}
+
+function sendInfoToastr(message, title)
+{
+  toastr.info(message, title);
+}
+
+function sendErrToastr(message, title)
+{
+  toastr.error(message, title);
 }
 
 function swalCancel(message = 'Aucune action n\'a été faite')

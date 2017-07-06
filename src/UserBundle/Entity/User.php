@@ -145,7 +145,16 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->isActive;
     }
 
-    /** @see \Serializable::serialize() */
+    public function enable()
+    {
+        $this->isActive = true;
+    }
+
+    public function disable()
+    {
+        $this->isActive = false;
+    }
+
     public function serialize()
     {
         return serialize([
@@ -157,7 +166,6 @@ class User implements AdvancedUserInterface, \Serializable
         ]);
     }
 
-    /** @see \Serializable::unserialize() */
     public function unserialize($serialized)
     {
         list (

@@ -1,6 +1,6 @@
 <div class="card-box">
     <h4 class="header-title m-t-0 m-b-30">Nouvel utilisateur</h4>
-    <form action="{{ path('security_user_manage') }}" method="post" class="form-horizontal" role="form" data-parsley-validate novalidate>
+    <form action="{{ path('user_manage') }}" method="post" class="form-horizontal" role="form" data-parsley-validate novalidate>
         <div class="form-group">
             {{ form_label(form.username, 'Email*', {
                 'label_attr': {

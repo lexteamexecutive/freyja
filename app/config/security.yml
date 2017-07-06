@@ -18,10 +18,10 @@ security:
             provider: db_provider
             anonymous: ~
             form_login:
-                check_path: security_user_login
+                check_path: security_login
                 csrf_token_generator: security.csrf.token_manager
                 default_target_path: security_index
-                login_path: security_user_login
+                login_path: security_login
             logout:
                 path:   /securite/deconnexion
                 target: /securite/connexion

@@ -12,14 +12,29 @@
 
         <tbody>
             {% for user in users %}
-            <tr {% if user == app.user %}class="info"{% endif %}>
+
+                {% set currentUser = false %}
+                {% if user == app.user %}
+                    {% set currentUser = true %}
+                {% endif %}
+
+            <tr{% if currentUser == true %} class="info"{% endif %}>
                 <td>{{ user.username }}</td>
                 <td>{{ user.getRoleUF }}</td>
-                <td>{{ user.isEnabled ? 'Oui' : 'Non' }}</td>
+                <td>
+                    <div class="checkbox checkbox-circle">
+                        <input onchange="updateUserIsActive(this);" type="checkbox"
+                        {% if user.isEnabled == true %} checked{% endif %}
+                        {% if currentUser == true %} disabled{% endif %}
+                        data-url="{{ path('user_update_isenabled', {'user': user.getId}) }}">
+                        <label for="tst">
+                        </label>
+                    </div>
+                </td>
                 <td class="actions">
                     <a href="javascript:void(0);"
                         onclick="deleteUser(this);"
-                        data-url="{{ path('security_user_delete', {'user': user.getId}) }}">
+                        data-url="{{ path('user_delete', {'user': user.getId}) }}">
                         <i class="fa fa-trash-o"></i>
                     </a>
                 </td>
