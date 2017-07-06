@@ -10,7 +10,6 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 /**
  * @ORM\Table(name="applicants")
  * @ORM\Entity(repositoryClass="ApplicantBundle\Repository\ApplicantRepository")
- * @UniqueEntity(fields="username", message="Cet Email est déjà utilisé")
  */
 class Applicant
 {
