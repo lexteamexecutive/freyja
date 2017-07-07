@@ -22,13 +22,12 @@
                 <td>{{ user.username }}</td>
                 <td>{{ user.getRoleUF }}</td>
                 <td>
-                    <div class="checkbox checkbox-circle">
-                        <input onchange="updateUserIsActive(this);" type="checkbox"
+                    <div class="checkbox checkbox-circle checkbox-single checkbox-custom">
+                        <input onchange="updateUserIsEnabled(this);" type="checkbox"
                         {% if user.isEnabled == true %} checked{% endif %}
                         {% if currentUser == true %} disabled{% endif %}
                         data-url="{{ path('user_update_isenabled', {'user': user.getId}) }}">
-                        <label for="tst">
-                        </label>
+                        <label></label>
                     </div>
                 </td>
                 <td class="actions">

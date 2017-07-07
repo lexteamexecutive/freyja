@@ -39,7 +39,7 @@ function deleteUser(element)
   });
 }
 
-function updateUserIsActive(element)
+function updateUserIsEnabled(element)
 {
   var url = element.dataset.url;
   var message = '';
