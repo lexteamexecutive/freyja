@@ -31,11 +31,6 @@
 </script>
 {% endblock %}
 
-{% block datatable %}
-<script type="text/javascript">
-</script>
-{% endblock %}
-
 {% block select2 %}
 <script type="text/javascript">
   $(".select2").select2({
@@ -49,10 +44,10 @@
 
 {% block body %}
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-5">
         {{ include('UserBundle:User:create.html.twig') }}
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-7">
         {{ include('UserBundle:User:table.html.twig') }}
     </div>
 </div>

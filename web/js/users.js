@@ -70,6 +70,9 @@ var lext = (function () {
 
   var passUpdateUser = passEventTarget.bind(null, 'user-update', updateUser);
   var passDeleteUser = passEventTarget.bind(null, 'user-delete', deleteUser);
-  TABLE.addEventListener('change', passUpdateUser);
-  TABLE.addEventListener('click', passDeleteUser);
+  
+  if (TABLE !== null) {
+    TABLE.addEventListener('change', passUpdateUser);
+    TABLE.addEventListener('click', passDeleteUser);
+  }
 }());

@@ -12,7 +12,7 @@
 
         <tbody>
             {% for user in users %}
-
+            
                 {% set currentUser = false %}
                 {% if user == app.user %}
                     {% set currentUser = true %}
@@ -28,7 +28,7 @@
                         {% if user.isEnabled == true %} checked{% endif %}
                         {% if currentUser == true %} disabled{% endif %}
                         data-url="{{ path('user_update_isenabled', {'user': user.getId}) }}">
-                        <label></label>
+                        <label style='display:none;'>{{ user.isEnabled }}</label>
                     </div>
                 </td>
                 <td class="actions">
