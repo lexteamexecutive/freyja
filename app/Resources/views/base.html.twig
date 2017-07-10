@@ -16,6 +16,7 @@
         'plugins/select2/dist/css/select2.css'
         'plugins/select2/dist/css/select2-bootstrap.css'
         'plugins/bootstrap-sweetalert/sweet-alert.css'
+        'plugins/switchery/switchery.min.css'
         filter='cssrewrite'
         output='css/compiled/plugins.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
@@ -88,16 +89,14 @@
 
   {% block javascripts %}
     {% javascripts
-      'js/libs/jquery.min.js'
-      'js/libs/bootstrap.min.js'
-      'js/libs/detect.js'
-      'js/libs/fastclick.js'
-      'js/libs/waves.js'
-      'js/libs/wow.min.js'
-      'js/libs/jquery.core.js'
-      'js/libs/jquery.app.js'
-      output='js/compiled/app.js' %}
-      <script src="{{ asset_url }}"></script>
+        'js/libs/jquery.min.js'
+        'js/libs/bootstrap.min.js'
+        'js/libs/detect.js'
+        'js/libs/fastclick.js'
+        'js/libs/waves.js'
+        'js/libs/wow.min.js'
+        output='js/compiled/app.js' %}
+        <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
   {% endblock %}
 
@@ -111,17 +110,27 @@
         'plugins/toastr/toastr.min.js'
         'plugins/parsleyjs/dist/parsley.min.js'
         'plugins/select2/dist/js/select2.min.js'
+        'plugins/switchery/switchery.min.js'
       output='js/compiled/plugins.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
   {% endblock %}
 
+  {% block jqueries %}
+    {% javascripts
+        'js/libs/jquery.core.js'
+        'js/libs/jquery.app.js'
+      output='js/compiled/jqueries.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+  {% endblock %}
+  
   {% block javascript_main %}
     {% javascripts
-      'js/main.js'
-      'js/users.js'
-      output='js/compiled/main.js' %}
-      <script src="{{ asset_url }}"></script>
+        'js/main.js'
+        'js/users.js'
+        output='js/compiled/main.js' %}
+        <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
   {% endblock %}
 

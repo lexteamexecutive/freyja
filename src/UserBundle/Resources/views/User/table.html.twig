@@ -22,8 +22,9 @@
                 <td>{{ user.username }}</td>
                 <td>{{ user.getRoleUF }}</td>
                 <td>
-                    <div class="checkbox checkbox-circle checkbox-single checkbox-custom">
+                    <div>
                         <input class="user-update" type="checkbox"
+                        data-plugin="switchery" data-size="small" data-color="#00b19d"
                         {% if user.isEnabled == true %} checked{% endif %}
                         {% if currentUser == true %} disabled{% endif %}
                         data-url="{{ path('user_update_isenabled', {'user': user.getId}) }}">
