@@ -71,3 +71,9 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+
+knp_gaufrette:
+    adapters:
+        cv:
+            local:
+                directory: /var/www/freyja-data

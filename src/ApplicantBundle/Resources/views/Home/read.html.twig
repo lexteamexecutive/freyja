@@ -17,18 +17,10 @@
     <div class="col-sm-5">
         <div class="card-box">
             <h4 class="header-title m-t-0 m-b-30">Candidat</h4>
-            {{ form_start(form) }}
-            {{ form_end(form) }}
-        </div>
-    </div>
-    <div class="col-sm-5">
-        <div class="card-box">
-            <h4 class="header-title m-t-0 m-b-30">Evaluation</h4>
-        </div>
-    </div>
-    <div class="col-sm-2">
-        <div class="card-box">
-            <h4 class="header-title m-t-0 m-b-30">Mémo</h4>
+            <ul>
+                <li>{{ applicant.firstName }}</li>
+                <li>{{ applicant.lastName }}</li>
+                <li><a href="{{ path('applicant_download_cv', {'applicant': applicant.getId}) }}">DL CV</a></li>
         </div>
     </div>
 </div>
