@@ -46,7 +46,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
     {% javascripts
-      'js/modernizr.min.js'
+      'js/libs/modernizr.min.js'
       output='js/compiled/modernizr.js' %}
       <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -88,15 +88,14 @@
 
   {% block javascripts %}
     {% javascripts
-      'js/jquery.min.js'
-      'js/bootstrap.min.js'
-      'js/detect.js'
-      'js/fastclick.js'
-      'js/waves.js'
-      'js/wow.min.js'
-      'js/jquery.core.js'
-      'js/jquery.app.js'
-      'js/main.js'
+      'js/libs/jquery.min.js'
+      'js/libs/bootstrap.min.js'
+      'js/libs/detect.js'
+      'js/libs/fastclick.js'
+      'js/libs/waves.js'
+      'js/libs/wow.min.js'
+      'js/libs/jquery.core.js'
+      'js/libs/jquery.app.js'
       output='js/compiled/app.js' %}
       <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -114,6 +113,15 @@
         'plugins/select2/dist/js/select2.min.js'
       output='js/compiled/plugins.js' %}
     <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+  {% endblock %}
+
+  {% block javascript_main %}
+    {% javascripts
+      'js/main.js'
+      'js/users.js'
+      output='js/compiled/main.js' %}
+      <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
   {% endblock %}
 

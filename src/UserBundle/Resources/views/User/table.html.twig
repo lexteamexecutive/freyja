@@ -1,6 +1,6 @@
 <div class="card-box table-responsive">
     <h4 class="header-title m-t-0 m-b-30">Liste des utilisateurs</h4>
-    <table class="datatable table table-striped dt-responsive nowrap">
+    <table id="users-table" class="datatable table table-striped dt-responsive nowrap">
         <thead>
             <tr>
                 <th>Nom d'utilisateur</th>
@@ -23,7 +23,7 @@
                 <td>{{ user.getRoleUF }}</td>
                 <td>
                     <div class="checkbox checkbox-circle checkbox-single checkbox-custom">
-                        <input onchange="updateUserIsEnabled(this);" type="checkbox"
+                        <input class="user-update" type="checkbox"
                         {% if user.isEnabled == true %} checked{% endif %}
                         {% if currentUser == true %} disabled{% endif %}
                         data-url="{{ path('user_update_isenabled', {'user': user.getId}) }}">
@@ -31,10 +31,9 @@
                     </div>
                 </td>
                 <td class="actions">
-                    <a href="javascript:void(0);"
-                        onclick="deleteUser(this);"
-                        data-url="{{ path('user_delete', {'user': user.getId}) }}">
-                        <i class="fa fa-trash-o"></i>
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-trash-o user-delete"
+                            data-url="{{ path('user_delete', {'user': user.getId}) }}"></i>
                     </a>
                 </td>
             </tr>

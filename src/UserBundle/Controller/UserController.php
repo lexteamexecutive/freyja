@@ -63,7 +63,7 @@ class UserController extends Controller
     {
         if ($this->isSameUser($user)) {
             return new JsonResponse([
-                'message' => 'Vous ne pouvez pas vous supprimez votre utilisateur actuel.',
+                'message' => 'Vous ne pouvez pas supprimer votre utilisateur actuel.',
             ]);
         }
         $em = $this->getDoctrine()->getEntityManager();

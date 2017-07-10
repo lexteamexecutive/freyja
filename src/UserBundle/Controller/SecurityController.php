@@ -18,7 +18,7 @@ class SecurityController extends Controller
     {
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             $this->addFlash('warning', 'Vous êtes déjà connecté, veuillez vous deconnecter si vous souhaitez vous reconnecter');
-            return $this->redirectToRoute('security_index');
+            return $this->redirectToRoute('front_dashboard');
         }
 
         $authenticationUtils = $this->get('security.authentication_utils');
