@@ -17,6 +17,7 @@
         'plugins/select2/dist/css/select2-bootstrap.css'
         'plugins/bootstrap-sweetalert/sweet-alert.css'
         'plugins/switchery/switchery.min.css'
+        'plugins/summernote/summernote.css'
         filter='cssrewrite'
         output='css/compiled/plugins.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
@@ -111,6 +112,7 @@
         'plugins/parsleyjs/dist/parsley.min.js'
         'plugins/select2/dist/js/select2.min.js'
         'plugins/switchery/switchery.min.js'
+        'plugins/summernote/summernote.min.js'
       output='js/compiled/plugins.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -129,6 +131,7 @@
     {% javascripts
         'js/main.js'
         'js/users.js'
+        'js/applicants.js'
         output='js/compiled/main.js' %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}

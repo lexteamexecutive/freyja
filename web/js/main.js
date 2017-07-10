@@ -15,6 +15,11 @@ var usersDatatable = $('#users-table').DataTable({
   language: { url: '//cdn.datatables.net/plug-ins/1.10.15/i18n/French.json' },
 });
 
+var applicantsSummernote = $('#evaluation-summernote').summernote({
+  placeholder: 'Vous pouvez écrire votre description ici...',
+  airMode: true,
+});
+
 // Various functions to use plugins
 // Toastr functions
 function sendInfoToastr(message, title)

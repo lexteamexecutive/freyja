@@ -14,22 +14,13 @@
 
 {% block body %}
 <div class="row">
-    <div class="col-sm-5">
-        <div class="card-box">
-            <h4 class="header-title m-t-0 m-b-30">Candidat</h4>
-            {{ form_start(form) }}
-            {{ form_end(form) }}
+    <form action="{{ path('applicant_home') }}" method="post" class="form-horizontal" role="form">
+        <div class="col-sm-5">
+            {% include 'ApplicantBundle:Applicant:form.html.twig' %}
         </div>
-    </div>
-    <div class="col-sm-5">
-        <div class="card-box">
-            <h4 class="header-title m-t-0 m-b-30">Evaluation</h4>
+        <div class="col-sm-5">
+            {% include 'ApplicantBundle:Evaluation:form.html.twig' %}
         </div>
-    </div>
-    <div class="col-sm-2">
-        <div class="card-box">
-            <h4 class="header-title m-t-0 m-b-30">Mémo</h4>
-        </div>
-    </div>
+    </form>
 </div>
 {% endblock %}

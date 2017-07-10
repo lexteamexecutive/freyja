@@ -3,6 +3,7 @@
 namespace ApplicantBundle\Form;
 
 use ApplicantBundle\Entity\Applicant;
+use ApplicantBundle\Form\EvaluationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -37,11 +38,8 @@ class ApplicantType extends AbstractType
                 ]
             )
             ->add(
-                'save',
-                SubmitType::class,
-                [
-                    'label' => 'Créer candidat',
-                ]
+                'evaluation',
+                EvaluationType::class
             )
         ;
     }

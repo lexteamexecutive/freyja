@@ -2,8 +2,8 @@
 
 namespace ApplicantBundle\Entity;
 
+use ApplicantBundle\Entity\Evaluation;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
@@ -35,11 +35,17 @@ class Applicant
      */
     private $cv;
 
+    /**
+     * One Applicant has One Evaluation.
+     * @ORM\OneToOne(targetEntity="Evaluation", mappedBy="applicant")
+     */
+    private $evaluation;
+
     public function getId()
     {
         return $this->id;
     }
-    
+
     public function getFirstName()
     {
         return $this->firstName;
@@ -68,6 +74,16 @@ class Applicant
     public function setCV($cv)
     {
         $this->cv = $cv;
+    }
+
+    public function getEvaluation()
+    {
+        return $this->evaluation;
+    }
+
+    public function setEvaluation(Evaluation $evaluation)
+    {
+        $this->evaluation = $evaluation;
     }
 
 }
