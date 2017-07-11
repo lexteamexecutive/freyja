@@ -4,9 +4,11 @@ namespace ApplicantBundle\Controller;
 
 use ApplicantBundle\Entity\Applicant;
 use ApplicantBundle\Form\ApplicantType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class ApplicantController extends Controller
@@ -47,7 +49,7 @@ class ApplicantController extends Controller
     }
 
     /**
-     * @Route("/candidat/{applicant}", name="applicant_view", requirements={"page": "\d+"})
+     * @Route("/candidat/{applicant}", name="applicant_view", requirements={"applicant": "\d+"})
      */
     public function readAction(Request $request, Applicant $applicant)
     {
@@ -72,12 +74,23 @@ class ApplicantController extends Controller
     }
 
     /**
-     * @Route("/candidat/{applicant}/cv", name="applicant_download_cv", requirements={"page": "\d+"})
+     * @Route("/candidat/{applicant}/cv", name="applicant_download_cv", requirements={"applicant": "\d+"})
      */
     public function downloadAction(Applicant $applicant)
     {
         $cvPath = '/var/www/freyja-data' . '/' . $applicant->getCv();
 
         return $this->file($cvPath);
+    }
+
+    /**
+     * @Route("/candidats/search", name="applicant_search")
+     */
+    public function searchApplicantAction(Request $request, $search = '')
+    {
+        $applicantRepo = $this->getDoctrine()->getRepository('ApplicantBundle:Applicant');
+        $applicants = $applicantRepo->findAllByParam($request->query->get('q'));
+
+        return new JsonResponse($applicants);
     }
 }

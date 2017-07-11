@@ -23,25 +23,6 @@
     {% endfor %}
 {% endblock %}
 
-{% block parsley %}
-<script type="text/javascript">
-	$(document).ready(function () {
-	  $('form').parsley();
-	});
-</script>
-{% endblock %}
-
-{% block select2 %}
-<script type="text/javascript">
-  $(".select2").select2({
-    maximumSelectionSize: 1,
-    formatSelectionTooBig: function (limit) {
-      return 'Vous ne pouvez selectionner qu\'un rôle';
-    }
-  });
-</script>
-{% endblock %}
-
 {% block body %}
 <div class="row">
     <div class="col-lg-5">

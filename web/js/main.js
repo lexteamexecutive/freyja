@@ -9,12 +9,13 @@ toastr.options = {
   onclick: null,
 };
 
-// Datatables Init
+// Datatables init
 var usersDatatable = $('#users-table').DataTable({
   bLengthChange: false,
   language: { url: '//cdn.datatables.net/plug-ins/1.10.15/i18n/French.json' },
 });
 
+// Summernote init
 var applicantsSummernote = $('#evaluation-summernote').summernote({
   lang: 'fr-FR',
   placeholder: 'Vous pouvez écrire votre description ici...',
@@ -22,6 +23,15 @@ var applicantsSummernote = $('#evaluation-summernote').summernote({
   minHeight: 300,
   maxHeight: 500,
 });
+
+// Select2 init
+var usersRoleSelect2 = $('#usersRoleSelect2').select2({
+  maximumSelectionSize: 1,
+  formatSelectionTooBig: function (limit) { return 'Vous ne pouvez selectionner qu\'un rôle'; },
+});
+
+// Parsley init
+var userForm =  $('form').parsley();
 
 // Various functions to use plugins
 // Toastr functions

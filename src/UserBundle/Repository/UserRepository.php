@@ -18,5 +18,4 @@ class UserRepository extends EntityRepository
 
         return $query->getResult();
     }
-
 }

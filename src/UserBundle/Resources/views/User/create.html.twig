@@ -29,10 +29,10 @@
             }}
             <div class="col-sm-7">
               {{ form_widget(form.roles, {
+                  'id': 'usersRoleSelect2',
                   'attr': {
                       'data-parsley-error-message': 'Veuillez choisir un rôle pour cet utilisateur',
                       'required': true,
-                      'class': 'select2'
                   },
                 })
               }}

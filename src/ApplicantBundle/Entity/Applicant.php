@@ -32,6 +32,10 @@ class Applicant
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @Assert\File(
+     *     maxSize = "1M",
+     * )
      */
     private $cv;
 
