@@ -21,22 +21,22 @@ class Applicant
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $firstName;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $lastName;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $cv;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $cvLastUpload;
 
@@ -78,7 +78,6 @@ class Applicant
 
     public function setCV($cv)
     {
-        $this->setCVLastUpload();
         $this->cv = $cv;
     }
 

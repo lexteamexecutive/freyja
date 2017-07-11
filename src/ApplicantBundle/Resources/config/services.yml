@@ -2,3 +2,13 @@ services:
 #    applicant.example:
 #        class: ApplicantBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    applicant.doctrine_cv_listener:
+            class: ApplicantBundle\EventListener\CVUploadListener
+            arguments: ['@applicant.cv_uploader']
+            tags:
+                - { name: doctrine.event_listener, event: prePersist }
+                - { name: doctrine.event_listener, event: preUpdate }
+
+    applicant.cv_uploader:
+        class: ApplicantBundle\Service\FileUploader
+        arguments: ['%cvs_directory%']

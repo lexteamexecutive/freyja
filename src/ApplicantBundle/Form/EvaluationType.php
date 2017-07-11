@@ -18,6 +18,7 @@ class EvaluationType extends AbstractType
                 TextareaType::class,
                 [
                     'label' => 'Description',
+                    'required' => false,
                 ]
             )
         ;

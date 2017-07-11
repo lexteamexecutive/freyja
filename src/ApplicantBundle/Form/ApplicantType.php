@@ -21,6 +21,7 @@ class ApplicantType extends AbstractType
                 TextType::class,
                 [
                     'label' => 'Prénom',
+                    'required' => false,
                 ]
             )
             ->add(
@@ -28,6 +29,7 @@ class ApplicantType extends AbstractType
                 TextType::class,
                 [
                     'label' => 'Nom',
+                    'required' => false,
                 ]
             )
             ->add(
@@ -35,6 +37,7 @@ class ApplicantType extends AbstractType
                 FileType::class,
                 [
                     'label' => 'CV',
+                    'required' => false,
                 ]
             )
             ->add(
