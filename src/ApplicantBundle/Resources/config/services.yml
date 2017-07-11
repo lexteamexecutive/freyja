@@ -3,7 +3,7 @@ services:
 #        class: ApplicantBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
     applicant.doctrine_cv_listener:
-            class: ApplicantBundle\EventListener\CVUploadListener
+            class: ApplicantBundle\EventListener\CvUploadListener
             arguments: ['@applicant.cv_uploader']
             tags:
                 - { name: doctrine.event_listener, event: prePersist }

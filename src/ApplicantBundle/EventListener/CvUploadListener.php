@@ -8,7 +8,7 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class CVUploadListener
+class CvUploadListener
 {
     private $uploader;
 
@@ -38,7 +38,7 @@ class CVUploadListener
             return;
         }
 
-        $file = $entity->getCV();
+        $file = $entity->getCv();
 
         // only upload new files
         if (!$file instanceof UploadedFile) {
@@ -46,7 +46,7 @@ class CVUploadListener
         }
 
         $fileName = $this->uploader->upload($file);
-        $entity->setCV($fileName);
-        $entity->setCVLastUpload();
+        $entity->setCv($fileName);
+        $entity->setCvLastUpload();
     }
 }

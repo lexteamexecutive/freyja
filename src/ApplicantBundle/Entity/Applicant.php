@@ -71,19 +71,24 @@ class Applicant
         $this->lastName = $lastName;
     }
 
-    public function getCV()
+    public function getCv()
     {
         return $this->cv;
     }
 
-    public function setCV($cv)
+    public function setCv($cv)
     {
         $this->cv = $cv;
     }
 
-    public function setCVLastUpload()
+    public function setCvLastUpload()
     {
         $this->cvLastUpload = new \DateTime("now");
+    }
+
+    public function getCvLastUploaded()
+    {
+        return $this->cvLastUpload;
     }
 
     public function getEvaluation()

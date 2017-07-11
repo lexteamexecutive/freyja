@@ -4,9 +4,10 @@ namespace ApplicantBundle\Controller;
 
 use ApplicantBundle\Entity\Applicant;
 use ApplicantBundle\Form\ApplicantType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\Request;
 
 class ApplicantController extends Controller
 {
@@ -20,6 +21,9 @@ class ApplicantController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $evaluation = $applicant->getEvaluation();
+            $evaluation->setApplicant($applicant);
+
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($applicant);
             $em->flush();
@@ -45,11 +49,23 @@ class ApplicantController extends Controller
     /**
      * @Route("/candidat/{applicant}", name="applicant_view", requirements={"page": "\d+"})
      */
-    public function readAction(Applicant $applicant)
+    public function readAction(Request $request, Applicant $applicant)
     {
+        $applicant->setCv(
+            new File($this->getParameter('cvs_directory').'/'.$applicant->getCv())
+        );
+        $form = $this->createForm(ApplicantType::class, $applicant);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->flush();
+        }
+
         return $this->render(
-            'ApplicantBundle:Home:read.html.twig',
+            'ApplicantBundle:Home:index.html.twig',
             [
+                'form' => $form->createView(),
                 'applicant' => $applicant,
             ]
         );
@@ -60,7 +76,7 @@ class ApplicantController extends Controller
      */
     public function downloadAction(Applicant $applicant)
     {
-        $cvPath = '/var/www/freyja-data' . '/' . $applicant->getCV();
+        $cvPath = '/var/www/freyja-data' . '/' . $applicant->getCv();
 
         return $this->file($cvPath);
     }
