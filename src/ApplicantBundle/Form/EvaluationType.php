@@ -15,7 +15,10 @@ class EvaluationType extends AbstractType
         $builder
             ->add(
                 'description',
-                TextareaType::class
+                TextareaType::class,
+                [
+                    'label' => 'Description',
+                ]
             )
         ;
     }

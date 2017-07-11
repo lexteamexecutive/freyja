@@ -36,8 +36,13 @@ class Applicant
     private $cv;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $cvLastUpload;
+
+    /**
      * One Applicant has One Evaluation.
-     * @ORM\OneToOne(targetEntity="Evaluation", mappedBy="applicant")
+     * @ORM\OneToOne(targetEntity="Evaluation", mappedBy="applicant", cascade={"persist"})
      */
     private $evaluation;
 
@@ -73,7 +78,13 @@ class Applicant
 
     public function setCV($cv)
     {
+        $this->setCVLastUpload();
         $this->cv = $cv;
+    }
+
+    public function setCVLastUpload()
+    {
+        $this->cvLastUpload = new \DateTime("now");
     }
 
     public function getEvaluation()

@@ -16,8 +16,11 @@ var usersDatatable = $('#users-table').DataTable({
 });
 
 var applicantsSummernote = $('#evaluation-summernote').summernote({
+  lang: 'fr-FR',
   placeholder: 'Vous pouvez écrire votre description ici...',
-  airMode: true,
+  height: 300,
+  minHeight: 300,
+  maxHeight: 500,
 });
 
 // Various functions to use plugins

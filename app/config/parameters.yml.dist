@@ -14,3 +14,5 @@ parameters:
     mailer_password: ~
 
     secret: ThisIsNoSecret
+
+    cvs_directory: /var/www/freyja-data

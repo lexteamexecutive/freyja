@@ -14,12 +14,24 @@
 
 {% block body %}
 <div class="row">
-    <form action="{{ path('applicant_home') }}" method="post" class="form-horizontal" role="form">
+    <form id="applicants-form" action="{{ path('applicant_home') }}" method="post"
+    class="form-horizontal" role="form" enctype="multipart/form-data">
         <div class="col-sm-5">
             {% include 'ApplicantBundle:Applicant:form.html.twig' %}
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-7">
             {% include 'ApplicantBundle:Evaluation:form.html.twig' %}
+        </div>
+        <div class="col-sm-12">
+            {{ form_widget(form._token) }}
+            <div class="form-group" style="padding-left:15px;">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">
+                    Enregistrement
+                </button>
+                <button type="reset" class="btn btn-info waves-effect waves-light m-l-5">
+                    Recherche
+                </button>
+            </div>
         </div>
     </form>
 </div>

@@ -72,7 +72,13 @@
       {% block footer %}
         <!-- Footer -->
         <footer class="footer text-right">
-          FOOTER
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-6">
+                        2017 © Lexteam Executive.
+                    </div>
+                </div>
+            </div>
         </footer>
         <!-- End Footer -->
       {% endblock %}
@@ -113,6 +119,7 @@
         'plugins/select2/dist/js/select2.min.js'
         'plugins/switchery/switchery.min.js'
         'plugins/summernote/summernote.min.js'
+        'plugins/summernote/lang/summernote-fr-FR.js'
       output='js/compiled/plugins.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}

@@ -31,7 +31,7 @@ class ApplicantController extends Controller
 
             // Move the file to the directory where brochures are stored
             $file->move(
-                '/var/www/freyja-data',
+                $this->getParameter('cvs_directory'),
                 $fileName
             );
 
@@ -57,7 +57,6 @@ class ApplicantController extends Controller
             'ApplicantBundle:Home:index.html.twig',
             [
                 'form' => $form->createView(),
-                'applicant' => $applicant,
             ]
         );
     }

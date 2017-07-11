@@ -1,4 +1,20 @@
 <div class="card-box">
     <h4 class="header-title m-t-0 m-b-30">Evaluation</h4>
-    <div id="evaluation-summernote"></div>
+    <div class="form-group">
+        {{ form_label(form.evaluation.description, 'Description', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-md-11">
+          {{ form_widget(form.evaluation.description, {
+              'id': 'evaluation-summernote',
+              'attr': {
+                  'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+    </div>
 </div>
