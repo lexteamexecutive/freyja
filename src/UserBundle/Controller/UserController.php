@@ -66,7 +66,7 @@ class UserController extends Controller
                 'message' => 'Vous ne pouvez pas supprimer votre utilisateur actuel.',
             ]);
         }
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $em->remove($user);
         $em->flush();
 
@@ -99,7 +99,7 @@ class UserController extends Controller
             $user->enable();
         }
 
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $em->flush();
 
         return new JsonResponse([

@@ -8,7 +8,7 @@ class UserRepository extends EntityRepository
 {
     public function findAllUF()
     {
-        $query = $this->getEntityManager()
+        $query = $this->getManager()
             ->createQuery(
                 'SELECT u
                 FROM UserBundle:User u

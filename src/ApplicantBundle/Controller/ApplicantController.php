@@ -26,7 +26,7 @@ class ApplicantController extends Controller
             $evaluation = $applicant->getEvaluation();
             $evaluation->setApplicant($applicant);
 
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($applicant);
             $em->flush();
 
@@ -49,18 +49,21 @@ class ApplicantController extends Controller
     }
 
     /**
-     * @Route("/candidat/{applicant}", name="applicant_view", requirements={"applicant": "\d+"})
+    * @Route("/candidat/{applicant}", name="applicant_view")
      */
     public function readAction(Request $request, Applicant $applicant)
     {
+        $flagCv = $applicant->getCv();
         $applicant->setCv(
             new File($this->getParameter('cvs_directory').'/'.$applicant->getCv())
         );
         $form = $this->createForm(ApplicantType::class, $applicant);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            if ($flagCv !== null && $applicant->getCv() === null) {
+                $applicant->setCv($flagCv);
+            }
+            $em = $this->getDoctrine()->getManager();
             $em->flush();
         }
 
@@ -81,16 +84,5 @@ class ApplicantController extends Controller
         $cvPath = '/var/www/freyja-data' . '/' . $applicant->getCv();
 
         return $this->file($cvPath);
-    }
-
-    /**
-     * @Route("/candidats/search", name="applicant_search")
-     */
-    public function searchApplicantAction(Request $request, $search = '')
-    {
-        $applicantRepo = $this->getDoctrine()->getRepository('ApplicantBundle:Applicant');
-        $applicants = $applicantRepo->findAllByParam($request->query->get('q'));
-
-        return new JsonResponse($applicants);
     }
 }

@@ -10,12 +10,12 @@ class ApplicantRepository extends EntityRepository
     {
         $query = $this->getEntityManager()
             ->createQuery(
-                'SELECT a.id, a.firstName AS text
+                "SELECT a.id, CONCAT(a.firstName, ' ', a.lastName) AS text
                 FROM ApplicantBundle:Applicant a
-                WHERE a.firstName NOT IN (?1)
-                OR a.lastName NOT IN (?1)'
+                WHERE a.firstName LIKE ?1
+                OR a.lastName LIKE ?1"
             );
-        $query->setParameter(1, $search);
+        $query->setParameter(1, '%' . $search . '%');
 
         return $query->getResult();
     }
