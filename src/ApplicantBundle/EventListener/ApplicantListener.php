@@ -3,12 +3,13 @@
 namespace ApplicantBundle\EventListener;
 
 use ApplicantBundle\Entity\Applicant;
+use ApplicantBundle\Entity\Evaluation;
 use ApplicantBundle\Service\FileUploader;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class CvUploadListener
+class ApplicantListener
 {
     private $uploader;
 
@@ -22,6 +23,7 @@ class CvUploadListener
         $entity = $args->getEntity();
 
         $this->uploadFile($entity);
+        $this->setLastUpdate($entity);
     }
 
     public function preUpdate(PreUpdateEventArgs $args)
@@ -29,11 +31,12 @@ class CvUploadListener
         $entity = $args->getEntity();
 
         $this->uploadFile($entity);
+        $this->setLastUpdate($entity);
     }
 
     private function uploadFile($entity)
     {
-        // upload only works for Product entities
+        // upload only works for Applicant entities
         if (!$entity instanceof Applicant) {
             return;
         }
@@ -48,5 +51,16 @@ class CvUploadListener
         $fileName = $this->uploader->upload($file);
         $entity->setCv($fileName);
         $entity->setCvLastUpload();
+    }
+
+    private function setLastUpdate($entity)
+    {
+        if ($entity instanceof Applicant) {
+            $entity->setLastUpdate();
+        }
+
+        if ($entity instanceof Evaluation) {
+            $entity->getApplicant()->setLastUpdate();
+        }
     }
 }

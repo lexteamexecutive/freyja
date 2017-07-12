@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class ApplicantController extends Controller
 {
@@ -28,7 +29,10 @@ class ApplicantController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($applicant);
+            $em->persist($evaluation);
             $em->flush();
+
+            $this->get('applicant_bag')->addApplicantInBag($applicant);
 
             return $this->redirect(
                 $this->generateUrl(
@@ -53,18 +57,25 @@ class ApplicantController extends Controller
      */
     public function readAction(Request $request, Applicant $applicant)
     {
-        $flagCv = $applicant->getCv();
+        $currentCv = $applicant->getCv();
         $applicant->setCv(
             new File($this->getParameter('cvs_directory').'/'.$applicant->getCv())
         );
         $form = $this->createForm(ApplicantType::class, $applicant);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($flagCv !== null && $applicant->getCv() === null) {
-                $applicant->setCv($flagCv);
+            if ($currentCv !== null && $applicant->getCv() === null) {
+                $applicant->setCv($currentCv);
+            } else {
+                $this->get('applicant.cv_uploader')->deleteFile($currentCv);
             }
+
             $em = $this->getDoctrine()->getManager();
+            $em->persist($applicant);
+            $em->persist($applicant->getEvaluation());
             $em->flush();
+
+            $this->get('applicant_bag')->addApplicantInBag($applicant);
         }
 
         return $this->render(
@@ -81,7 +92,7 @@ class ApplicantController extends Controller
      */
     public function downloadAction(Applicant $applicant)
     {
-        $cvPath = '/var/www/freyja-data' . '/' . $applicant->getCv();
+        $cvPath = $this->get('applicant.cv_uploader')->getTargetDir() . '/' . $applicant->getCv();
 
         return $this->file($cvPath);
     }

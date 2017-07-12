@@ -37,11 +37,28 @@
                             Utilisateur: {{ app.user.username }}
                         </p>
                     </li>
-                    <li class="ms-hover" style="width:200px;padding-top:13px;">
+                    <li class="ms-hover" style="width:200px;padding-top:13px;margin-right:15px;">
                         <input id="search-select2" type="text"
                           placeholder="Recherche..." class="form-control"
                           data-url="{{ path('front_search') }}"
                           data-url-to-applicant="{{ url('applicant_view', {'applicant': '__id__'}) }}"/>
+                    </li>
+                    <li class="ms-hover">
+                        <!-- Notification -->
+                        <div class="notification-box">
+                            <ul class="list-inline m-b-0">
+                                <li class="ms-hover">
+                                    <a href="javascript:void(0);" class="right-bar-toggle">
+                                        <i class="zmdi zmdi-notifications-none"></i>
+                                    </a>
+                                    <div class="noti-dot">
+                                        <span class="dot"></span>
+                                        <span class="pulse"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Notification bar -->
                     </li>
                     <li class="dropdown user-box">
                         <a href="" class="dropdown-toggle waves-effect waves-light profile " data-toggle="dropdown" aria-expanded="true">

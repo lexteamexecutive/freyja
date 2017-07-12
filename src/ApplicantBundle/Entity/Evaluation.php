@@ -28,7 +28,7 @@ class Evaluation
 
     /**
      * One Evaluation has One Applicant.
-     * @ORM\OneToOne(targetEntity="Applicant", inversedBy="evaluation")
+     * @ORM\OneToOne(targetEntity="Applicant", inversedBy="evaluation", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="applicant_id", referencedColumnName="id")
      */
     private $applicant;

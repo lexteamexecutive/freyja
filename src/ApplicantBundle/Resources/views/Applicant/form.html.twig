@@ -50,7 +50,7 @@
                 <small>Dernier ajout de CV le:
                     <a href="{{ path('applicant_download_cv', {'applicant': applicant.getId}) }}">
                         <mark>
-                            {{ applicant.getCvLastUploaded|date("m/d/Y H:i") }}
+                            {{ applicant.cvLastUpload|date("m/d/Y H:i") }}
                         </mark>
                     </a>
                 </small>

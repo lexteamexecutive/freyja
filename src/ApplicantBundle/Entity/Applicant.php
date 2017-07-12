@@ -46,9 +46,14 @@ class Applicant
 
     /**
      * One Applicant has One Evaluation.
-     * @ORM\OneToOne(targetEntity="Evaluation", mappedBy="applicant", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Evaluation", mappedBy="applicant", cascade={"persist", "remove"})
      */
     private $evaluation;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $lastUpdate;
 
     public function getId()
     {
@@ -90,9 +95,19 @@ class Applicant
         $this->cvLastUpload = new \DateTime("now");
     }
 
-    public function getCvLastUploaded()
+    public function getCvLastUpload()
     {
         return $this->cvLastUpload;
+    }
+
+    public function setLastUpdate()
+    {
+        $this->lastUpdate = new \DateTime("now");
+    }
+
+    public function getLastUpdate()
+    {
+        return $this->lastUpdate;
     }
 
     public function getEvaluation()
