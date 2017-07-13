@@ -3,6 +3,7 @@ var users = (function () {
 
   function updateUser(element) {
     var url = element.dataset.url;
+    var tr = element.parentNode.parentNode.parentNode;
     var message = '';
 
     $.ajax({
@@ -10,8 +11,12 @@ var users = (function () {
       success: function () {
         if (element.checked) {
           message = 'Utilisateur activé';
+          tr.style.backgroundColor = '#f5f5f5';
+          element.parentElement.children[2].innerHTML = '1';
         } else {
           message = 'Utilisateur désactivé';
+          tr.style.backgroundColor = 'lightgrey';
+          element.parentElement.children[2].innerHTML = '0';
         }
 
         sendInfoToastr('La modification à été prise en compte', message);

@@ -11,6 +11,7 @@ toastr.options = {
 
 // Datatables init
 var usersDatatable = $('#users-table').DataTable({
+  destroy: true,
   bLengthChange: false,
   language: { url: '//cdn.datatables.net/plug-ins/1.10.15/i18n/French.json' },
 });

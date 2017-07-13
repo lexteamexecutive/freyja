@@ -21,13 +21,15 @@ class ApplicantBag
     public function addApplicantInBag(Applicant $applicant)
     {
         $applicantsBag = $this->session->get('applicant');
-
-        foreach ($applicantsBag as $key => $applicantInBag) {
-            if ($applicant->getId() === $applicantInBag->getid()) {
-                unset($applicantsBag[$key]);
+        
+        if($applicantsBag !== null) {
+            foreach ($applicantsBag as $key => $applicantInBag) {
+                if ($applicant->getId() === $applicantInBag->getid()) {
+                    unset($applicantsBag[$key]);
+                }
             }
         }
-        
+
         $applicantsBag[] = $applicant;
         $this->session->set('applicant', $applicantsBag);
     }

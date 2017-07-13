@@ -1,6 +1,6 @@
 <div class="card-box table-responsive">
     <h4 class="header-title m-t-0 m-b-30">Liste des utilisateurs</h4>
-    <table id="users-table" class="datatable table table-striped dt-responsive nowrap">
+    <table id="users-table" class="datatable table dt-responsive nowrap">
         <thead>
             <tr>
                 <th>Nom d'utilisateur</th>
@@ -18,13 +18,13 @@
                     {% set currentUser = true %}
                 {% endif %}
 
-            <tr{% if currentUser == true %} class="info"{% endif %}>
+            <tr class="{% if currentUser == true %} info{% endif %}" {% if user.isEnabled == false %}style="background-color:lightgrey;"{% endif %}>
                 <td>{{ user.username }}</td>
                 <td>{{ user.getRoleUF }}</td>
                 <td>
                     <div>
                         <input class="user-update" type="checkbox"
-                        data-plugin="switchery" data-size="small" data-color="#00b19d"
+                        data-plugin="switchery" data-size="small" data-color="#98a6ad"
                         {% if user.isEnabled == true %} checked{% endif %}
                         {% if currentUser == true %} disabled{% endif %}
                         data-url="{{ path('user_update_isenabled', {'user': user.getId}) }}">

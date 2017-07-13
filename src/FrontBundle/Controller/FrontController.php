@@ -44,12 +44,16 @@ class FrontController extends Controller
         $applicantRepo = $this->getDoctrine()->getRepository('ApplicantBundle:Applicant');
         $applicants = $applicantRepo->findAllByParam($request->query->get('q'));
 
-        $result = [
-            [
-                'text'     => 'Candidats',
-                'children' => $applicants,
-            ],
-        ];
+        if (count($applicants) > 0) {
+            $result = [
+                [
+                    'text'     => 'Candidats',
+                    'children' => $applicants,
+                ],
+            ];
+        } else {
+            $result = [];
+        }
 
         return new JsonResponse($result);
     }

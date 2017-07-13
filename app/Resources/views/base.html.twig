@@ -140,6 +140,7 @@
         'plugins/toastr/toastr.min.js'
         'plugins/parsleyjs/dist/parsley.min.js'
         'plugins/select2/dist/js/select2.min.js'
+        'https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.3/select2_locale_fr.min.js'
         'plugins/switchery/switchery.min.js'
         'plugins/summernote/summernote.min.js'
         'plugins/summernote/lang/summernote-fr-FR.js'
@@ -166,6 +167,10 @@
         output='js/compiled/main.js' %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+  {% endblock %}
+
+  <!-- Plugins -->
+  {% block toastr %}
   {% endblock %}
   </body>
 </html>

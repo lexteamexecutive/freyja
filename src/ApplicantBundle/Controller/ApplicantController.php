@@ -57,10 +57,12 @@ class ApplicantController extends Controller
      */
     public function readAction(Request $request, Applicant $applicant)
     {
-        $currentCv = $applicant->getCv();
-        $applicant->setCv(
-            new File($this->getParameter('cvs_directory').'/'.$applicant->getCv())
-        );
+        if ($applicant->getCv() !== null) {
+            $currentCv = $applicant->getCv();
+            $applicant->setCv(
+                new File($this->getParameter('cvs_directory').'/'.$applicant->getCv())
+            );
+        }
         $form = $this->createForm(ApplicantType::class, $applicant);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

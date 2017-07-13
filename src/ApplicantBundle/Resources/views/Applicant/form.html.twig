@@ -45,7 +45,7 @@
             })
           }}
           {{ form_errors(form.cv) }}
-          {% if applicant is defined %}
+          {% if applicant is defined and applicant.cv is not null %}
             <span class="help-block">
                 <small>Dernier ajout de CV le:
                     <a href="{{ path('applicant_download_cv', {'applicant': applicant.getId}) }}">

@@ -1,29 +1,29 @@
 var search = (function () {
 
-  var $applicantSelect2 = $('#search-select2').select2({
-    ajax: {
-      url: getUrlForSelect2(),
-      dataType: 'json',
-      type: 'GET',
-      delay: 250,
-      data: function (params) {
+var $applicantSelect2 = $('#search-select2').select2({
+  ajax: {
+    url: getUrlForSelect2(),
+    dataType: 'json',
+    type: 'GET',
+    delay: 250,
+    data: function (params) {
+      return {
+          q: params,
+        };
+    },
+
+    results: function (data, page) {
         return {
-            q: params,
+            results: data,
           };
       },
 
-      results: function (data, page) {
-          return {
-              results: data,
-            };
-        },
+    cache: true,
+  },
+  escapeMarkup: function (markup) { return markup; },
 
-      cache: true,
-    },
-    escapeMarkup: function (markup) { return markup; },
-
-    minimumInputLength: 1,
-  });
+  minimumInputLength: 2,
+});
 
   function getUrlForSelect2()
   {
