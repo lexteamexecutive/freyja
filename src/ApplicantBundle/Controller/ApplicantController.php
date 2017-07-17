@@ -69,7 +69,7 @@ class ApplicantController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             if (isset($currentCv) && $applicant->getCv() === null) {
                 $applicant->setCv($currentCv);
-            } elseif ($applicant->getCv() !== null) {
+            } else {
                 $this->get('applicant.cv_uploader')->deleteFile($currentCv);
             }
 
