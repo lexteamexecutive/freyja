@@ -94,7 +94,7 @@
             <h4 class="">Derniers enregistrements</h4>
             <div class="notification-list nicescroll" style="overflow: hidden; outline: none;" tabindex="5000">
                 <ul class="list-group list-no-border user-list">
-                    {% for applicant in app.session.get('applicant') %}
+                    {% for applicant in app.session.get('applicant')|reverse %}
                     <li class="list-group-item">
                         <a href="{{ path('applicant_view', {'applicant': applicant.id})}}" class="user-list-item">
                             <div class="user-desc">
