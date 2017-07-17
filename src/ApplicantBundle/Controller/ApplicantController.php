@@ -63,10 +63,11 @@ class ApplicantController extends Controller
                 new File($this->getParameter('cvs_directory').'/'.$applicant->getCv())
             );
         }
+
         $form = $this->createForm(ApplicantType::class, $applicant);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($currentCv !== null && $applicant->getCv() === null) {
+            if (isset($currentCv) && $applicant->getCv() === null) {
                 $applicant->setCv($currentCv);
             } else {
                 $this->get('applicant.cv_uploader')->deleteFile($currentCv);
