@@ -1,7 +1,21 @@
 <div class="card-box">
     <h4 class="header-title m-t-0 m-b-30">Candidat</h4>
     <div class="form-group">
-        {{ form_label(form.firstName, 'Prénom', {
+        {{ form_label(form.lastName, 'Nom*', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.lastName, {
+              'attr': {
+                  'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+        {{ form_label(form.firstName, 'Prénom*', {
             'label_attr': {
                 'class': 'col-sm-1 control-label'
             }
@@ -15,16 +29,109 @@
             })
           }}
         </div>
-        {{ form_label(form.lastName, 'Nom', {
+    </div>
+    <div class="form-group">
+        {{ form_label(form.civilStatus, 'Etat Civil', {
             'label_attr': {
                 'class': 'col-sm-1 control-label'
             }
           })
         }}
         <div class="col-sm-5">
-          {{ form_widget(form.lastName, {
+          {{ form_widget(form.civilStatus, {
               'attr': {
                   'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+        <label class="col-sm-1 control-label" for="applicant_lastName">Sexe</label>
+        <div class="col-sm-5">
+            <div class="radio radio-info radio-inline">
+                <input type="radio" id="applicant_sexe_0" name="applicant[sexe]"
+                value="H"{% if applicant is not defined or applicant.sexe == 'H' %} checked{% endif %}>
+                <label for="applicant_sexe_0"> Homme </label>
+            </div>
+            <div class="radio radio-pink radio-inline">
+                <input type="radio" id="applicant_sexe_1" name="applicant[sexe]"
+                value="F"{% if applicant is defined and applicant.sexe == 'F' %} checked{% endif %}>
+                <label for="applicant_sexe_1"> Femme </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.address, 'Adresse', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-11">
+          {{ form_widget(form.address, {
+              'attr': {
+                  'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.email1, 'Email1', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.email1, {
+              'attr': {
+                  'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+        {{ form_label(form.portable1, 'Port.1', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.portable1, {
+              'attr': {
+                  'class': 'form-control',
+                  'data-mask': '99.99.99.99.99'
+              },
+            })
+          }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.email2, 'Email2', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.email2, {
+              'attr': {
+                  'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+        {{ form_label(form.portable2, 'Port.2', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.portable2, {
+              'attr': {
+                  'class': 'form-control',
+                  'data-mask': '99.99.99.99.99'
               },
             })
           }}

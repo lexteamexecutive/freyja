@@ -32,9 +32,44 @@ class Applicant
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     */
+    private $civilStatus;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $sexe;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $email1;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $email2;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $portable1;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $portable2;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
      *
      * @Assert\File(
-     *     maxSize = "1M",
+     *     maxSize = "10M",
      * )
      */
     private $cv;
@@ -78,6 +113,76 @@ class Applicant
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+    }
+
+    public function getCivilStatus()
+    {
+        return $this->civilStatus;
+    }
+
+    public function setCivilStatus($civilStatus)
+    {
+        $this->civilStatus = $civilStatus;
+    }
+
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
+
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
+    }
+
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    public function getEmail1()
+    {
+        return $this->email1;
+    }
+
+    public function setEmail1($email1)
+    {
+        $this->email1 = $email1;
+    }
+
+    public function getEmail2()
+    {
+        return $this->email2;
+    }
+
+    public function setEmail2($email2)
+    {
+        $this->email2 = $email2;
+    }
+
+    public function getPortable1()
+    {
+        return $this->portable1;
+    }
+
+    public function setPortable1($portable1)
+    {
+        $this->portable1 = $portable1;
+    }
+
+    public function getPortable2()
+    {
+        return $this->portable2;
+    }
+
+    public function setPortable2($portable2)
+    {
+        $this->portable2 = $portable2;
     }
 
     public function getCv()

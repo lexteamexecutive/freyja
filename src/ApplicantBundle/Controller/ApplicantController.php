@@ -24,6 +24,7 @@ class ApplicantController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            dump($applicant);die;
             $evaluation = $applicant->getEvaluation();
             $evaluation->setApplicant($applicant);
 
@@ -99,5 +100,9 @@ class ApplicantController extends Controller
         $cvPath = $this->get('applicant.cv_uploader')->getTargetDir() . '/' . $applicant->getCv();
 
         return $this->file($cvPath);
+    }
+
+    private function setCvInApplicantForm(Applicant $applicant)
+    {
     }
 }

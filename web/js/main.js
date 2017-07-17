@@ -32,7 +32,7 @@ var usersRoleSelect2 = $('#usersRoleSelect2').select2({
 });
 
 // Parsley init
-var userForm =  $('form').parsley();
+var userForm =  $('#security-login').parsley();
 
 // Various functions to use plugins
 // Toastr functions
