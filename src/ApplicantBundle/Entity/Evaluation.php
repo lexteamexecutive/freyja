@@ -22,6 +22,11 @@ class Evaluation
     private $id;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $oathTaking;
+
+    /**
      * @ORM\Column(type="string", nullable=true)
      */
     private $description;
@@ -36,6 +41,16 @@ class Evaluation
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getOathTaking()
+    {
+        return $this->oathTaking;
+    }
+
+    public function setOathTaking($oathTaking)
+    {
+        $this->oathTaking = $oathTaking;
     }
 
     public function getDescription()

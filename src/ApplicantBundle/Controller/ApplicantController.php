@@ -24,7 +24,6 @@ class ApplicantController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($applicant);die;
             $evaluation = $applicant->getEvaluation();
             $evaluation->setApplicant($applicant);
 
@@ -76,8 +75,6 @@ class ApplicantController extends Controller
             }
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($applicant);
-            $em->persist($applicant->getEvaluation());
             $em->flush();
 
             $this->get('applicant_bag')->addApplicantInBag($applicant);

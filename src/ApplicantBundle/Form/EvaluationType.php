@@ -6,6 +6,7 @@ use ApplicantBundle\Entity\Evaluation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class EvaluationType extends AbstractType
@@ -14,10 +15,17 @@ class EvaluationType extends AbstractType
     {
         $builder
             ->add(
+                'oathTaking',
+                DateType::class,
+                [
+                    'required' => false,
+                    'widget' => 'single_text',
+                ]
+            )
+            ->add(
                 'description',
                 TextareaType::class,
                 [
-                    'label' => 'Description',
                     'required' => false,
                 ]
             )
