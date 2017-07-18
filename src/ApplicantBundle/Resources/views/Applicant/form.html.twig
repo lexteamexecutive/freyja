@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="form-group">
-        {{ form_label(form.civilStatus, 'Etat Civil', {
+        {{ form_label(form.civilStatus, 'Civilité', {
             'label_attr': {
                 'class': 'col-sm-1 control-label'
             }
@@ -50,12 +50,12 @@
             <div class="radio radio-info radio-inline">
                 <input type="radio" id="applicant_sexe_0" name="applicant[sexe]"
                 value="H"{% if applicant is not defined or applicant.sexe == 'H' %} checked{% endif %}>
-                <label for="applicant_sexe_0"> Homme </label>
+                <label for="applicant_sexe_0"> H </label>
             </div>
             <div class="radio radio-pink radio-inline">
                 <input type="radio" id="applicant_sexe_1" name="applicant[sexe]"
                 value="F"{% if applicant is defined and applicant.sexe == 'F' %} checked{% endif %}>
-                <label for="applicant_sexe_1"> Femme </label>
+                <label for="applicant_sexe_1"> F </label>
             </div>
         </div>
     </div>
@@ -66,10 +66,12 @@
             }
           })
         }}
-        <div class="col-sm-11">
+        <div class="col-sm-5" style="height:50px;">
           {{ form_widget(form.address, {
               'attr': {
-                  'class': 'form-control'
+                  'class': 'form-control',
+                  'rows': '2',
+                  'cols': '40'
               },
             })
           }}
@@ -90,7 +92,7 @@
             })
           }}
         </div>
-        {{ form_label(form.portable1, 'Port.1', {
+        {{ form_label(form.portable1, 'Tel 1', {
             'label_attr': {
                 'class': 'col-sm-1 control-label'
             }
@@ -121,7 +123,7 @@
             })
           }}
         </div>
-        {{ form_label(form.portable2, 'Port.2', {
+        {{ form_label(form.portable2, 'Tel 2', {
             'label_attr': {
                 'class': 'col-sm-1 control-label'
             }

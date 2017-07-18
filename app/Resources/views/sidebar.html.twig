@@ -23,6 +23,7 @@
                                 data-container="body" title=""
                                 data-toggle="popover" data-placement="left"
                                 data-html="true"
+                                data-trigger="focus"
                                 data-content="{{ applicant.evaluation.description|raw|replace({'"': '\"'}) }}"
                                 data-original-title="{{ applicant.lastName }} {{ applicant.firstName }}"
                                 aria-describedby="popover{{ applicant.id }}">
