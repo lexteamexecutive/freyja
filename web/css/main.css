@@ -10,10 +10,10 @@
 
 /* APPLICANT FORM */
 #applicant_lastName {
-    background-color:lightgrey;
+    background-color:lightgrey !important;
 }
 
 #applicant_address {
-    min-height: 60px;
-    height: 60px;
+    min-height: 55px;
+    height: 55px;
 }

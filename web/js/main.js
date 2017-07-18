@@ -23,6 +23,13 @@ var applicantsSummernote = $('#evaluation-summernote').summernote({
   height: 300,
   minHeight: 300,
   maxHeight: 500,
+  toolbar: [
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['fontname', ['fontname']],
+    ['fontsize', ['fontsize']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+  ],
 });
 
 // Select2 init
