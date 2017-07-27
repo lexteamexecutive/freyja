@@ -117,7 +117,7 @@ class Evaluation
         return $this->speciality;
     }
 
-    public function setSpeciality($job)
+    public function setSpeciality($speciality)
     {
         $this->speciality = $speciality;
     }
