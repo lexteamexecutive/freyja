@@ -1,13 +1,28 @@
 <div class="card-box">
     <h4 class="header-title m-t-0 m-b-30">Evaluation</h4>
     <div class="form-group">
-        {{ form_label(form.evaluation.oathTaking, 'Date de serment', {
+        {{ form_label(form.evaluation.job, 'Fonction', {
             'label_attr': {
                 'class': 'col-sm-1 control-label'
             }
           })
         }}
-        <div class="col-md-5">
+        <div class="col-md-3">
+          {{ form_widget(form.evaluation.job, {
+              'attr': {
+                  'class': 'form-control',
+              },
+            })
+          }}
+        </div>
+
+        {{ form_label(form.evaluation.oathTaking, 'Date de serment', {
+            'label_attr': {
+                'class': 'col-sm-2 control-label'
+            }
+          })
+        }}
+        <div class="col-md-3">
           {{ form_widget(form.evaluation.oathTaking, {
               'attr': {
                   'class': 'form-control',
@@ -17,7 +32,48 @@
         </div>
     </div>
     <div class="form-group">
-        {{ form_label(form.evaluation.description, 'Description', {
+        {{ form_label(form.evaluation.speciality, 'Spécialité', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-md-3">
+          {{ form_widget(form.evaluation.speciality, {
+              'attr': {
+                  'class': 'form-control',
+              },
+            })
+          }}
+        </div>
+
+        {{ form_label(form.evaluation.firstExperience, 'Date de première expérience', {
+            'label_attr': {
+                'class': 'col-sm-2 control-label'
+            }
+          })
+        }}
+        <div class="col-md-3">
+          {{ form_widget(form.evaluation.firstExperience, {
+              'attr': {
+                  'class': 'form-control',
+              },
+            })
+          }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-6 col-md-3">
+          {{ form_widget(form.evaluation.firstExperienceBis, {
+              'attr': {
+                  'class': 'form-control',
+              },
+            })
+          }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.evaluation.description, 'Commentaires', {
             'label_attr': {
                 'class': 'col-sm-1 control-label'
             }

@@ -107,6 +107,13 @@ class ApplicantType extends AbstractType
                 ]
             )
             ->add(
+                'cvCom',
+                TextareaType::class,
+                [
+                    'required' => false,
+                ]
+            )
+            ->add(
                 'evaluation',
                 EvaluationType::class
             )

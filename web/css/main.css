@@ -13,6 +13,10 @@
     background-color:lightgrey !important;
 }
 
+#applicant_firstName {
+    background-color:lightgrey !important;
+}
+
 #applicant_address {
     min-height: 55px;
     height: 55px;

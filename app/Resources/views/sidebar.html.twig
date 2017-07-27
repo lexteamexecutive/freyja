@@ -15,7 +15,7 @@
                             </div>
                         </a>
                         <div>
-                            <span class="desc"> Serment: {{ applicant.evaluation.oathTaking|date('d/m/Y') }} </span>
+                            <span class="desc"> Fonction: {{ applicant.evaluation.job.label|default('Aucune') }} </span>
                         </div>
                         <div>
                             <span class="time">

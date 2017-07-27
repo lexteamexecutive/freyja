@@ -3,6 +3,7 @@
 namespace ApplicantBundle\Form;
 
 use ApplicantBundle\Entity\Evaluation;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,6 +21,40 @@ class EvaluationType extends AbstractType
                 [
                     'required' => false,
                     'widget' => 'single_text',
+                ]
+            )
+            ->add(
+                'firstExperience',
+                DateType::class,
+                [
+                    'required' => false,
+                    'widget' => 'single_text',
+                ]
+            )
+            ->add(
+                'firstExperienceBis',
+                DateType::class,
+                [
+                    'required' => false,
+                    'widget' => 'single_text',
+                ]
+            )
+            ->add(
+                'job',
+                EntityType::class,
+                [
+                    'class' => 'ApplicantBundle:EvaluationJob',
+                    'choice_label' => 'label',
+                    'required' => false,
+                ]
+            )
+            ->add(
+                'speciality',
+                EntityType::class,
+                [
+                    'class' => 'ApplicantBundle:EvaluationSpeciality',
+                    'choice_label' => 'label',
+                    'required' => false,
                 ]
             )
             ->add(

@@ -75,6 +75,11 @@ class Applicant
     private $cv;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $cvCom;
+
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $cvLastUpload;
@@ -193,6 +198,16 @@ class Applicant
     public function setCv($cv)
     {
         $this->cv = $cv;
+    }
+
+    public function getCvCom()
+    {
+        return $this->cvCom;
+    }
+
+    public function setCvCom($cvCom)
+    {
+        $this->cvCom = $cvCom;
     }
 
     public function setCvLastUpload()
