@@ -14,9 +14,6 @@
             <button type="submit" class="btn btn-primary waves-effect waves-light btn-md">
                 Créer la spécialité
             </button>
-            {% if formEvaluationSpeciality.vars.valid == false %}
-                <p style="color:#ea4423;">Cette spécialité existe déjà.</p>
-            {% endif %}
             {{ form_widget(formEvaluationSpeciality._token) }}
         </form>
     </div>

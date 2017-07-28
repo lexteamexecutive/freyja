@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Table(name="evaluations_specialities")
  * @ORM\Entity(repositoryClass="ApplicantBundle\Repository\EvaluationSpecialityRepository")
- * @UniqueEntity(fields="label", message="Ce libellé est déjà utilisé")
+ * @UniqueEntity(fields="label", message="Cette spécialité existe déjà.")
  */
 class EvaluationSpeciality
 {

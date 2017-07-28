@@ -14,9 +14,6 @@
             <button type="submit" class="btn btn-primary waves-effect waves-light btn-md">
                 Créer la fonction
             </button>
-            {% if formEvaluationJob.vars.valid == false %}
-                <p style="color:#ea4423;">Cette fonction existe déjà.</p>
-            {% endif %}
             {{ form_widget(formEvaluationJob._token) }}
         </form>
     </div>

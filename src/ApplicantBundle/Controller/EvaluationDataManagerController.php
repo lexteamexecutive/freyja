@@ -32,6 +32,10 @@ class EvaluationDataManagerController extends Controller
 
             $jobs[] = $job;
             $this->addFlash('success', 'Fonction créée');
+        } else {
+            foreach ($formEvaluationJob->getErrors(true) as $error) {
+                $this->addFlash('error', $error->getMessage());
+            }
         }
 
         $speciality = new EvaluationSpeciality();
@@ -49,6 +53,10 @@ class EvaluationDataManagerController extends Controller
 
             $specialities[] = $speciality;
             $this->addFlash('success', 'Spécialité créée');
+        } else {
+            foreach ($formEvaluationSpeciality->getErrors(true) as $error) {
+                $this->addFlash('error', $error->getMessage());
+            }
         }
 
         return $this->render(
