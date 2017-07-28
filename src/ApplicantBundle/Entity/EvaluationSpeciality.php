@@ -24,9 +24,10 @@ class EvaluationSpeciality
     private $label;
 
     /**
-     * One Job has Many Evaluations.
+     * Many Jobs has Many Evaluations.
      *
-     * @ORM\OneToMany(targetEntity="Evaluation", mappedBy="speciality")
+     * Many Groups have Many Users.
+     * @ORM\ManyToMany(targetEntity="Evaluation", mappedBy="specialities")
      */
     private $evaluations;
 
@@ -57,6 +58,6 @@ class EvaluationSpeciality
 
     public function addEvaluation(Evaluation $evaluation)
     {
-        return $this->evaluations->add($evaluation);
+        $this->evaluations[] = $evaluation;
     }
 }

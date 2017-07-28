@@ -5,6 +5,7 @@ namespace ApplicantBundle\Entity;
 use ApplicantBundle\Entity\Applicant;
 use ApplicantBundle\Entity\EvaluationJob;
 use ApplicantBundle\Entity\EvaluationSpeciality;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -47,12 +48,12 @@ class Evaluation
     private $job;
 
     /**
-     * Many Evaluations have One Speciality.
+     * Many Evaluations have Many Specialities.
      *
-     * @ORM\ManyToOne(targetEntity="EvaluationSpeciality", inversedBy="evaluations")
-     * @ORM\JoinColumn(name="speciality_id", referencedColumnName="id", nullable=true)
+     * @ORM\ManyToMany(targetEntity="EvaluationSpeciality", inversedBy="evaluations", cascade={"persist"})
+     * @ORM\JoinTable(name="evaluations_specialities_join")
      */
-    private $speciality;
+    private $specialities;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -66,6 +67,11 @@ class Evaluation
      * @ORM\JoinColumn(name="applicant_id", referencedColumnName="id")
      */
     private $applicant;
+
+    public function __construct()
+    {
+        $this->specialities = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -112,14 +118,20 @@ class Evaluation
         $this->job = $job;
     }
 
-    public function getSpeciality()
+    public function getSpecialities()
     {
-        return $this->speciality;
+        return $this->specialities;
     }
 
-    public function setSpeciality($speciality)
+    public function setSpecialities($specialities)
     {
-        $this->speciality = $speciality;
+        $this->specialities = $specialities;
+    }
+
+    public function addSpeciality(EvaluationSpeciality $speciality)
+    {
+        $speciality->add($this);
+        $this->specialities[] = $speciality;
     }
 
     public function getDescription()
