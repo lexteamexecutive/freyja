@@ -15,6 +15,9 @@
         'plugins/toastr/toastr.min.css'
         'plugins/select2/dist/css/select2.css'
         'plugins/select2/dist/css/select2-bootstrap.css'
+        'plugins/bootstrap-sweetalert/sweet-alert.css'
+        'plugins/switchery/switchery.min.css'
+        'plugins/summernote/summernote.css'
         filter='cssrewrite'
         output='css/compiled/plugins.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
@@ -28,6 +31,7 @@
       'css/pages.css'
       'css/menu.css'
       'css/responsive.css'
+      'css/main.css'
       filter='cssrewrite'
       output='css/compiled/app.css' %}
       <link rel="stylesheet" href="{{ asset_url }}" />
@@ -44,7 +48,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
     {% javascripts
-      'js/modernizr.min.js'
+      'js/libs/modernizr.min.js'
       output='js/compiled/modernizr.js' %}
       <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -55,7 +59,7 @@
 {% endblock %}
 
   <div class="wrapper">
-    <div class="container">
+    <div class="container-fluid">
       {% block page_title %}
         <!-- Page-Title -->
         <div class="row">
@@ -68,7 +72,13 @@
       {% block footer %}
         <!-- Footer -->
         <footer class="footer text-right">
-          FOOTER
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-6">
+                        2017 © Lexteam Executive.
+                    </div>
+                </div>
+            </div>
         </footer>
         <!-- End Footer -->
       {% endblock %}
@@ -76,56 +86,65 @@
     <!-- end container -->
 
       {% block right_sidebar %}
-        <!-- Right Sidebar -->
-        <div class="side-bar right-bar">
-            SIDEBAR RIGHT
-        </div>
-        <!-- /Right-bar -->
+      {% include "sidebar.html.twig" %}
       {% endblock %}
   </div>
 
   {% block javascripts %}
     {% javascripts
-      'js/jquery.min.js'
-      'js/bootstrap.min.js'
-      'js/detect.js'
-      'js/fastclick.js'
-      'js/waves.js'
-      'js/wow.min.js'
-      'js/jquery.core.js'
-      'js/jquery.app.js'
-      output='js/compiled/app.js' %}
-      <script src="{{ asset_url }}"></script>
+        'js/libs/jquery.min.js'
+        'js/libs/bootstrap.min.js'
+        'js/libs/detect.js'
+        'js/libs/fastclick.js'
+        'js/libs/waves.js'
+        'js/libs/wow.min.js'
+        output='js/compiled/app.js' %}
+        <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
   {% endblock %}
 
   {% block plugins_js %}
     {% javascripts
-      'plugins/datatables/jquery.dataTables.min.js'
-      'plugins/datatables/dataTables.bootstrap.js'
-      'plugins/datatables/dataTables.buttons.min.js'
-      'plugins/datatables/buttons.bootstrap.min.js'
-      'plugins/toastr/toastr.min.js'
-      'plugins/parsleyjs/dist/parsley.min.js'
-      'plugins/select2/dist/js/select2.min.js'
+        'plugins/bootstrap-inputmask/bootstrap-inputmask.min.js'
+        'plugins/bootstrap-sweetalert/sweet-alert.min.js'
+        'plugins/datatables/jquery.dataTables.min.js'
+        'plugins/datatables/dataTables.bootstrap.js'
+        'plugins/datatables/dataTables.buttons.min.js'
+        'plugins/datatables/buttons.bootstrap.min.js'
+        'plugins/toastr/toastr.min.js'
+        'plugins/parsleyjs/dist/parsley.min.js'
+        'plugins/select2/dist/js/select2.min.js'
+        'https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.3/select2_locale_fr.min.js'
+        'plugins/switchery/switchery.min.js'
+        'plugins/summernote/summernote.min.js'
+        'plugins/summernote/lang/summernote-fr-FR.js'
       output='js/compiled/plugins.js' %}
-      <script src="{{ asset_url }}"></script>
+    <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
   {% endblock %}
 
-  {#
-      Init Declarations Plugins JS
-  #}
+  {% block jqueries %}
+    {% javascripts
+        'js/libs/jquery.core.js'
+        'js/libs/jquery.app.js'
+      output='js/compiled/jqueries.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+  {% endblock %}
+
+  {% block javascript_main %}
+    {% javascripts
+        'js/main.js'
+        'js/users.js'
+        'js/applicants.js'
+        'js/search.js'
+        output='js/compiled/main.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+  {% endblock %}
+
+  <!-- Plugins -->
   {% block toastr %}
-  {% endblock %}
-
-  {% block parsley %}
-  {% endblock %}
-
-  {% block datatable %}
-  {% endblock %}
-
-  {% block select2 %}
   {% endblock %}
   </body>
 </html>

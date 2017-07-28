@@ -1,10 +1,10 @@
 <div class="card-box">
     <h4 class="header-title m-t-0 m-b-30">Nouvel utilisateur</h4>
-    <form action="{{ path('security_user_manage') }}" method="post" class="form-horizontal" role="form" data-parsley-validate novalidate>
+    <form action="{{ path('user_manage') }}" method="post" class="form-horizontal" role="form" data-parsley-validate novalidate>
         <div class="form-group">
             {{ form_label(form.username, 'Email*', {
                 'label_attr': {
-                    'class': 'col-sm-4 control-label'
+                    'class': 'col-sm-3 control-label'
                 }
               })
             }}
@@ -23,16 +23,16 @@
         <div class="form-group">
             {{ form_label(form.roles, 'Role*', {
                 'label_attr': {
-                    'class': 'col-sm-4 control-label'
+                    'class': 'col-sm-3 control-label'
                 }
               })
             }}
             <div class="col-sm-7">
               {{ form_widget(form.roles, {
+                  'id': 'usersRoleSelect2',
                   'attr': {
                       'data-parsley-error-message': 'Veuillez choisir un rôle pour cet utilisateur',
                       'required': true,
-                      'class': 'select2'
                   },
                 })
               }}
@@ -41,7 +41,7 @@
         <div class="form-group">
             {{ form_label(form.plainPassword.first, 'Mot de passe*', {
                 'label_attr': {
-                    'class': 'col-sm-4 control-label'
+                    'class': 'col-sm-3 control-label'
                 }
               })
             }}
@@ -59,7 +59,7 @@
         <div class="form-group">
             {{ form_label(form.plainPassword.second, 'Confirmation mot de passe*', {
                 'label_attr': {
-                    'class': 'col-sm-4 control-label'
+                    'class': 'col-sm-3 control-label'
                 }
               })
             }}
@@ -77,7 +77,7 @@
         </div>
         {{ form_widget(form._token) }}
         <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-8">
+            <div class="col-sm-offset-3 col-sm-8">
                 <button type="submit" class="btn btn-primary waves-effect waves-light">
                     Enregistrement de l'utilisateur
                 </button>

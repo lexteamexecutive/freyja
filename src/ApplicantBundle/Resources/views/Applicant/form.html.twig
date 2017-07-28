@@ -1,0 +1,180 @@
+<div class="card-box">
+    <h4 class="header-title m-t-0 m-b-30">Candidat</h4>
+    <div class="form-group">
+        {{ form_label(form.lastName, 'Nom*', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.lastName, {
+              'attr': {
+                  'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+        {{ form_label(form.firstName, 'Prénom*', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.firstName, {
+              'attr': {
+                  'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.civilStatus, 'Civilité', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.civilStatus, {
+              'attr': {
+                  'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+        <label class="col-sm-1 control-label" for="applicant_lastName">Sexe</label>
+        <div class="col-sm-5">
+            <div class="radio radio-info radio-inline">
+                <input type="radio" id="applicant_sexe_0" name="applicant[sexe]"
+                value="H"{% if applicant is not defined or applicant.sexe == 'H' %} checked{% endif %}>
+                <label for="applicant_sexe_0"> H </label>
+            </div>
+            <div class="radio radio-pink radio-inline">
+                <input type="radio" id="applicant_sexe_1" name="applicant[sexe]"
+                value="F"{% if applicant is defined and applicant.sexe == 'F' %} checked{% endif %}>
+                <label for="applicant_sexe_1"> F </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.address, 'Adresse', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5" style="height:50px;">
+          {{ form_widget(form.address, {
+              'attr': {
+                  'class': 'form-control',
+                  'rows': '2',
+                  'cols': '40'
+              },
+            })
+          }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.email1, 'Email1', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.email1, {
+              'attr': {
+                  'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+        {{ form_label(form.portable1, 'Tel 1', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.portable1, {
+              'attr': {
+                  'class': 'form-control',
+                  'data-mask': '99.99.99.99.99'
+              },
+            })
+          }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.email2, 'Email2', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.email2, {
+              'attr': {
+                  'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+        {{ form_label(form.portable2, 'Tel 2', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-5">
+          {{ form_widget(form.portable2, {
+              'attr': {
+                  'class': 'form-control',
+                  'data-mask': '99.99.99.99.99'
+              },
+            })
+          }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.cv, 'CV', {
+            'label_attr': {
+                'class': 'col-sm-1 control-label'
+            }
+          })
+        }}
+        <div class="col-sm-10">
+          {{ form_widget(form.cv, {
+              'attr': {
+                  'class': ''
+              },
+            })
+          }}
+          {{ form_errors(form.cv) }}
+          {% if applicant is defined and applicant.cv is not null %}
+            <span class="help-block">
+                <small>Dernier ajout de CV le:
+                    <a href="{{ path('applicant_download_cv', {'applicant': applicant.getId}) }}">
+                        <mark>
+                            {{ applicant.cvLastUpload|date("m/d/Y H:i") }}
+                        </mark>
+                    </a>
+                </small>
+            </span>
+          {% endif %}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12">
+          {{ form_widget(form.cvCom, {
+              'attr': {
+                  'class': 'form-control'
+              },
+            })
+          }}
+        </div>
+    </div>
+</div>

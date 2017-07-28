@@ -1,3 +1,13 @@
+applicant:
+    resource: "@ApplicantBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+front:
+    resource: "@FrontBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 logout:
     path: /securite/deconnexion
 

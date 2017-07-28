@@ -1,0 +1,25 @@
+<div class="card-box">
+    <div>
+        <h4 class="header-title m-t-0 m-b-30">Les fonctions</h4>
+        <form class="form-inline" action="{{ path('evaluation_manager_data') }}" method="POST">
+            <div class="form-group m-r-10">
+                {{ form_widget(formEvaluationJob.label, {
+                    'attr': {
+                        'class': 'form-control',
+                        'placeholder': 'Libellé'
+                    },
+                  })
+                }}
+            </div>
+            <button type="submit" class="btn btn-primary waves-effect waves-light btn-md">
+                Créer la fonction
+            </button>
+            {{ form_widget(formEvaluationJob._token) }}
+        </form>
+    </div>
+    <div style="margin-top:15px;">
+    {% for evaluation in evaluations %}
+        <p class="btn btn-custom waves-effect waves-light m-r-5 m-b-10">{{ evaluation.label }}</p>
+    {% endfor %}
+    </div>
+</div>

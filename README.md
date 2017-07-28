@@ -37,3 +37,32 @@ docker-compose exec freyja setfacl -Rm u:www-data:rwx /var/www/freyja/var/
 ```
 docker-compose exec freyja vendor/bin/phpunit -c app/phpunit.xml
 ```
+
+## BDD
+```
+INSERT INTO `evaluations_jobs` (`id`, `label`) VALUES
+(NULL, 'Associé'),
+(NULL, 'Collaborateur'),
+(NULL, 'Counsel'),
+(NULL, 'Juriste'),
+(NULL, 'Assist./Secrétaire jurid.'),
+(NULL, 'Dir. / Resp. Jurid'),
+(NULL, 'RH'),
+(NULL, 'Comm. / Marketing'),
+(NULL, 'Notaire'),
+(NULL, 'Assist. Marques'),
+(NULL, 'Assist./Secrétaire Brevets'),
+(NULL, 'Ingénieur Brevets'),
+(NULL, 'Conseil en PI');
+```
+
+```
+INSERT INTO `evaluations_specialities` (`id`, `label`) VALUES
+(NULL, 'Corporate/M&A'),
+(NULL, 'Tax'),
+(NULL, 'Assurances'),
+(NULL, 'Contentieux'),
+(NULL, 'Projets/Energie/Afrique'),
+(NULL, 'Social'),
+(NULL, 'Santé');
+```

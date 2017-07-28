@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des utilisateurs{% endblock %}
+
+{% block page_title %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="btn-group pull-right m-t-25">
+        </div>
+        <h4 class="page-title">Gestion des utilisateurs</h4>
+    </div>
+</div>
+{% endblock %}
+
+{% block toastr %}
+    {% for key, flash_message in app.session.flashBag.all() %}
+        {% include "toastr.html.twig" with {
+          type: key,
+          title: 'Utilisateur',
+          message: flash_message[0]
+          }
+        %}
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-5">
+        {{ include('UserBundle:User:create.html.twig') }}
+    </div>
+    <div class="col-lg-7">
+        {{ include('UserBundle:User:table.html.twig') }}
+    </div>
+</div>
+{% endblock %}

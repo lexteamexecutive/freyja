@@ -1,0 +1,45 @@
+<div class="side-bar right-bar" style="display: none;z-index:1000!important;">
+    <a href="javascript:void(0);" class="right-bar-toggle">
+        <i class="zmdi zmdi-close-circle-o"></i>
+    </a>
+    <h4 class="">Derniers enregistrements</h4>
+    <div class="notification-list nicescroll" style="overflow: hidden; outline: none;" tabindex="5000">
+        <ul class="list-group list-no-border user-list">
+            {% for applicant in app.session.get('applicant')|reverse %}
+            <li class="list-group-item">
+                <a href="#" class="user-list-item">
+                    <div class="user-desc">
+                        <a href="{{ path('applicant_view', {'applicant': applicant.id})}}">
+                            <div>
+                                <span class="name"> {{ applicant.lastName }} {{ applicant.firstName }} </span>
+                            </div>
+                        </a>
+                        <div>
+                            <span class="desc"> {{ applicant.evaluation.job.label|default('Aucune fonction connue') }} </span>
+                        </div>
+                        <div>
+                            <span class="time">
+                                <button type="button" class="btn btn-custom"
+                                data-container="body" title=""
+                                data-toggle="popover" data-placement="left"
+                                data-html="true"
+                                data-trigger="focus"
+                                data-content="{{ applicant.evaluation.description|raw|replace({'"': '\"'}) }}"
+                                data-original-title="{{ applicant.lastName }} {{ applicant.firstName }}"
+                                aria-describedby="popover{{ applicant.id }}">
+                                    Commentaire
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="ascrail2000" class="nicescroll-rails" style="width: 8px; z-index: 9999; cursor: default; position: absolute; top: 57px; left: 232px; height: 498px; display: none; opacity: 0;">
+        <div style="position: relative; top: 0px; float: right; width: 6px; height: 0px; background-color: rgb(152, 166, 173); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 5px;"></div>
+    </div>
+    <div id="ascrail2000-hr" class="nicescroll-rails" style="height: 8px; z-index: 9999; top: 547px; left: 0px; position: absolute; cursor: default; display: none; opacity: 0;"><div style="position: relative; top: 0px; height: 6px; width: 0px; background-color: rgb(152, 166, 173); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 5px; left: 0px;"></div>
+    </div>
+</div>

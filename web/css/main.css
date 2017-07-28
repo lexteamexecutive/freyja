@@ -1,0 +1,23 @@
+#navbar-username {
+    color:rgba(255, 255, 255, 0.7);
+    position:relative;
+    margin:20px 30px 15px 10px;
+}
+
+#topnav {
+    z-index:1000;
+}
+
+/* APPLICANT FORM */
+#applicant_lastName {
+    background-color:lightgrey !important;
+}
+
+#applicant_firstName {
+    background-color:lightgrey !important;
+}
+
+#applicant_address {
+    min-height: 55px;
+    height: 55px;
+}

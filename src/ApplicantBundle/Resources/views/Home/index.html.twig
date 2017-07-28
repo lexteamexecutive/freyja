@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des candidats{% endblock %}
+
+{% block page_title %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="btn-group pull-right m-t-25">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+
+{% if app.request.attributes.get("_route") == 'applicant_home' %}
+    {% set formPath = path('applicant_home') %}
+{% else %}
+    {% set formPath = path('applicant_view', {'applicant': applicant.getId}) %}
+{% endif %}
+
+<div class="row">
+    <form id="applicants-form" action="{{ formPath }}" method="post"
+    class="form-horizontal" role="form" enctype="multipart/form-data">
+        <div class="col-sm-5">
+            {% include 'ApplicantBundle:Applicant:form.html.twig' %}
+        </div>
+        <div class="col-sm-7">
+            {% include 'ApplicantBundle:Evaluation:form.html.twig' %}
+        </div>
+        <div class="col-sm-12">
+            {{ form_widget(form._token) }}
+            <div class="form-group" style="padding-left:15px;">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">
+                    Enregistrement
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
