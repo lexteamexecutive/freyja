@@ -48,7 +48,7 @@ class ApplicantListener
             return;
         }
 
-        $fileName = $this->uploader->upload($file);
+        $fileName = $this->uploader->upload($entity, $file);
         $entity->setCv($fileName);
         $entity->setCvLastUpload();
     }

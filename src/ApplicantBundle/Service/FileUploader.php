@@ -13,9 +13,9 @@ class FileUploader
         $this->targetDir = $targetDir;
     }
 
-    public function upload(UploadedFile $file)
+    public function upload($applicant, UploadedFile $file)
     {
-        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+        $fileName = 'CV_'.$applicant->getAllName().'.'.$file->guessExtension();
 
         $file->move(
             $this->getTargetDir(),

@@ -120,6 +120,14 @@ class Applicant
         $this->lastName = $lastName;
     }
 
+    public function getAllName()
+    {
+        return
+            $this->getLastName()
+            . '_'
+            . $this->getFirstName();
+    }
+
     public function getCivilStatus()
     {
         return $this->civilStatus;
