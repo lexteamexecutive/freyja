@@ -4,10 +4,12 @@ namespace ApplicantBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Table(name="evaluations_specialities")
  * @ORM\Entity(repositoryClass="ApplicantBundle\Repository\EvaluationSpecialityRepository")
+ * @UniqueEntity(fields="label", message="Ce libellé est déjà utilisé")
  */
 class EvaluationSpeciality
 {

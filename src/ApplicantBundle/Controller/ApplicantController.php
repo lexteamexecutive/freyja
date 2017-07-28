@@ -98,8 +98,4 @@ class ApplicantController extends Controller
 
         return $this->file($cvPath);
     }
-
-    private function setCvInApplicantForm(Applicant $applicant)
-    {
-    }
 }

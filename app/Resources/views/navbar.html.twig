@@ -68,7 +68,12 @@
 
                         <ul class="dropdown-menu">
                             {% if is_granted('ROLE_ADMIN') %}
-                                <li><a href="{{ path('user_manage') }}"><i class="ti-user m-r-5"></i> Gestion Utilisateurs</a></li>
+                                <li>
+                                    <a href="{{ path('user_manage') }}"><i class="ti-user m-r-5"></i> Gestion Utilisateurs</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('evaluation_manager_data') }}"><i class="ti-panel m-r-5"></i> Données Evaluations</a>
+                                </li>
                             {% endif %}
                             <li><a href="{{ path('logout') }}"><i class="ti-power-off m-r-5"></i> Se Deconnecter</a></li>
                         </ul>

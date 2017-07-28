@@ -1,0 +1,28 @@
+<div class="card-box">
+    <div>
+        <h4 class="header-title m-t-0 m-b-30">Les spécialités</h4>
+        <form class="form-inline" action="{{ path('evaluation_manager_data') }}" method="POST">
+            <div class="form-group m-r-10">
+                {{ form_widget(formEvaluationSpeciality.label, {
+                    'attr': {
+                        'class': 'form-control',
+                        'placeholder': 'Libellé'
+                    },
+                  })
+                }}
+            </div>
+            <button type="submit" class="btn btn-primary waves-effect waves-light btn-md">
+                Créer la spécialité
+            </button>
+            {% if formEvaluationSpeciality.vars.valid == false %}
+                <p style="color:#ea4423;">Cette spécialité existe déjà.</p>
+            {% endif %}
+            {{ form_widget(formEvaluationSpeciality._token) }}
+        </form>
+    </div>
+    <div style="margin-top:15px;">
+    {% for speciality in specialities %}
+        <p class="btn btn-custom waves-effect waves-light m-r-5 m-b-10">{{ speciality.label }}</p>
+    {% endfor %}
+    </div>
+</div>

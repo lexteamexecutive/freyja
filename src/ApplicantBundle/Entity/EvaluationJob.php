@@ -4,10 +4,12 @@ namespace ApplicantBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Table(name="evaluations_jobs")
  * @ORM\Entity(repositoryClass="ApplicantBundle\Repository\EvaluationJobRepository")
+ * @ORM\Table(name="evaluations_jobs")
+ * @UniqueEntity(fields="label", message="Ce libellé est déjà utilisé")
  */
 class EvaluationJob
 {
@@ -25,7 +27,7 @@ class EvaluationJob
 
     /**
      * One Job has Many Evaluations.
-     * 
+     *
      * @ORM\OneToMany(targetEntity="Evaluation", mappedBy="job")
      */
     private $evaluations;
@@ -34,7 +36,7 @@ class EvaluationJob
         $this->evaluations = new ArrayCollection();
     }
 
-    public function getId($id)
+    public function getId()
     {
         return $this->id;
     }
